@@ -1,7 +1,7 @@
 AUTHOR = 'mrat'
 SITENAME = 'csmics'
-SITEURL = "http://localhost:8000"
-#SITEURL = "https://mr4tt.github.io/csmic"
+# SITEURL = "http://localhost:8000"
+SITEURL = "https://mr4tt.github.io/csmic"
 
 PATH = "content"
 
@@ -33,7 +33,7 @@ SOCIAL = (
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
+RELATIVE_URLS = True
 THEME = 'themes/Peli-Kiera'
 ARTICLE_PATHS = ['comics']
 ARTICLE_SAVE_AS = '{date:%Y}/{slug}.html'
