@@ -60,8 +60,19 @@
     <footer>
         <h6>
             Rendered by <a href="http://getpelican.com/">Pelican</a> &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/aleylara/Peli-Kiera">Peli-Kiera</a> 
-            &nbsp;&bull;&nbsp; Copyright &copy{% if COPYRIGHT %}{{ COPYRIGHT }} {% endif %}
-            {% if AUTHOR %} &nbsp;&#8209;&nbsp; {{ AUTHOR }} {% endif %}
+            &nbsp;&bull;&nbsp; {% if COPYRIGHT %}{Copyright&copy { COPYRIGHT }} {% endif %} {% if AUTHOR %} By {{ AUTHOR }} {% endif %}
+
+            {% if SOCIAL %}
+            <div class="social">
+                    <ul>
+                    {% for name, link in SOCIAL %}
+                        {% if name == "Github" or name == "github" %}
+                            <li><a class="icons-github" href="{{ link }}" target="_blank"> </a></li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+    {% endif %}
+        
         </h6>
     </footer>
 </div>
