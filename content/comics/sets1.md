@@ -6,9 +6,15 @@ Slug: sets1
 Authors: Mrat
 Summary: How do sets work? 
 
-# Sets!
-
 We are going to investigate the basics of a set. 
 
-![finally done *setting* up this site](set1p1.png)
-![finally done *setting* up this site](set1p2.png)
+We will cover:
+
+- what is a set
+- how to insert values
+- how to ensure there are no duplicates
+- how to search for values
+- how to delete values
+
+![finally done *setting* up this site](/images/set1p1.png)
+![finally done *setting* up this site](/images/set1p2.png)

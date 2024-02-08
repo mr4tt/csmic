@@ -26,8 +26,7 @@ LINKS = (
 
 # Social widget
 SOCIAL = (
-    ("You can add links in your config file", "#"),
-    ("Another social link", "#"),
+    ("Github", "https://github.com/mr4tt"),
 )
 
 DEFAULT_PAGINATION = 10
