@@ -26,7 +26,7 @@ LINKS = (
 
 # Social widget
 SOCIAL = (
-    ("Github", "https://github.com/mr4tt"),
+    ("github", "https://github.com/mr4tt"),
 )
 
 DEFAULT_PAGINATION = 10
@@ -40,6 +40,8 @@ ARTICLE_URL = '{date:%Y}/{slug}.html'
 
 #PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = ['readtime', 'neighbors']
+
+STATIC_PATHS = ['images']
 
 # MENUITEMS = [
 #     ('Google', 'http://www.google.com')
