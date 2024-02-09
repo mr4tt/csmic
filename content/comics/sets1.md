@@ -17,4 +17,4 @@ We will cover:
 - how to delete values
 
 ![finally done *setting* up this site]({attach}../images/set1p1.png)
-![finally done *setting* up this site]({attach}../images/set1p1.png)
+![finally done *setting* up this site]({attach}../images/set1p2.png)
