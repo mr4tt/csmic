@@ -4,11 +4,13 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>csmics - Mrat</title>
+        <title>csmics - Sets: How to Get Around Hash Collisions</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda"/>
         <link rel="stylesheet" type="text/css" href="../theme/css/main.css"/>
+
+<meta name="tags" content="sets" />
 </head>
 <body>
 <style>.github-corner:hover .octo-arm {
@@ -43,26 +45,56 @@
     </header>
     <nav>
         <ul>
-                    <li><a href="../category/data-structures.html">Data Structures</a></li>
+                    <li><a  class="active" href="../category/data-structures.html">Data Structures</a></li>
                     <li><a href="../pages/about-me.html">About Me</a></li>
         </ul>
     </nav>
-    <main>
-        <section id="list">
-            <h2>Articles by - Mrat</h2>
+<main>
+    <article>
+        <h1>Sets: How to Get Around Hash Collisions</h1>
+        
+        <aside>
             <ul>
-                        <h3>2024</h3>
-                        <li>
-                            <a href="../2024/sets2.html">Sets: How to Get Around Hash Collisions</a>
-                            <time>Feb 2024</time>
-                        </li>
-                        <li>
-                            <a href="../2024/sets1.html">Introduction to Sets</a>
-                            <time>Feb 2024</time>
-                        </li>
+                <li>
+                    <time datetime="2024-02-14 20:46:00-08:00">Feb 14, 2024</time>
+                </li>
+                <li>
+                    Categories:
+                    <a href="../category/data-structures.html"><em>Data Structures</em></a>
+                </li>
+                <li>
+                    Tags:
+                    <a href="../tag/sets.html"><em>#sets</em></a>
+                </li>
             </ul>
-        </section>
-    </main>
+        </aside>
+        <p>We are going to look at one method of getting around hash collisions: linear probing. </p>
+<p>We will cover:</p>
+<ul>
+<li>what does a hash collision look like</li>
+<li>how to insert, search, and delete with linear probing</li>
+<li>how to solve problems with deletion</li>
+</ul>
+<p><img alt="i am *set* free til part 3" src="../2024/set2p1.png">
+<img alt="i am *set* free til part 3" src="../2024/set2p2.png">
+<img alt="i am *set* free til part 3" src="../2024/set2p3.png">
+<img alt="i am *set* free til part 3" src="../2024/set2p4.png"></p>
+    </article>
+    <section class="post-nav">
+        <div id="left-page">
+            <div id="left-link">
+            </div>
+        </div>
+        <div id="right-page">
+            <div id="right-link">
+                <a href="../2024/sets1.html">Introduction to Sets </a>
+                <div id="right-arrow"><i class="fa fa-chevron-circle-right"></i></div>
+            </div>
+        </div>
+    </section>
+    <div>
+    </div>
+</main>
     <footer>
         <h6>
             Rendered by <a href="http://getpelican.com/">Pelican</a> &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/aleylara/Peli-Kiera">Peli-Kiera</a> 
