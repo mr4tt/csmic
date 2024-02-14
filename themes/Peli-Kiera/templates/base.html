@@ -26,7 +26,7 @@
         {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
             <ul class="social-media">
                 {% for name, link in SOCIAL %}
-                    <li><a href="{{ link }}"><i class="fa-brands fa-{{ name }}" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ link }}"><i class="fa-brands fa-{{ name }}" target="_blank" aria-hidden="true"></i></a></li>
                 {% endfor %}
                 {% if FEED_ALL_ATOM %}
                     <li><a href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate"><i class="fa fa-rss fa-lg" aria-hidden="true"></i></a></li>
