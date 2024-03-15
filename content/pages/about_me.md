@@ -10,7 +10,7 @@ Hello! I am a student at UC San Diego.
 
 On this site, I write / draw about CS topics. 
 
-## Some things I find interesting:
+## Some things I find interesting or do:
 
 - devops
 - observability
@@ -20,7 +20,7 @@ On this site, I write / draw about CS topics.
 - crocheting
 - collecting [links](https://github.com/mr4tt/zotbot)
 - reading sci-fi and fantasy
-- finding a job :')
+- look for a job :')
 
 Currently recovering from minesweeper addiction.
 
