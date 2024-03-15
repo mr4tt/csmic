@@ -14,7 +14,7 @@ Summary: How can we personalize Google Scholar to accommodate researchers of dif
 
 ---
 
-![cover photo]({attach}../images/googlescholar/covercrop.png){:margin: 0px -50px 0px -50px }
+![cover photo]({attach}/images/googlescholar/covercrop.png)
 
 ## **Overview**
 
@@ -77,7 +77,7 @@ Thus, we pivoted to Google Scholar, as it was by far the most used platform whil
 ## Solution
 
 User Flow:
-![user flow]({attach}../images/googlescholar/userflow.png)
+![user flow]({attach}/images/googlescholar/userflow.png)
 
 From our user interviews’ insights, we brainstormed a variety of features we wanted to implement and how they would fit into the flow of using Google Scholar. For instance: 
 
@@ -92,8 +92,8 @@ Note: See Appendix for the pages
 
 I conducted 4 user testing session for our hi-fi prototypes, leading to a multitude of changes from our original designs.
 
-![homepage iteration]({attach}../images/googlescholar/homepage_itr.png)
-![trending page iteration]({attach}../images/googlescholar/trending_itr.png)
+![homepage iteration]({attach}/images/googlescholar/homepage_itr.png)
+![trending page iteration]({attach}/images/googlescholar/trending_itr.png)
 
 ## **Conclusion**
 
@@ -124,7 +124,7 @@ Thank you to my teammates Edward De Leon, Vivian Yan, and William Duan for being
 
 <div class="row">
   <div class="col col--9">
-    <img src="{attach}../images/googlescholar/homepage.png"/>
+    <img src="{attach}/images/googlescholar/homepage.png"/>
   </div>
   <div class="col">
     <b> Home Page: </b>
@@ -137,7 +137,7 @@ Thank you to my teammates Edward De Leon, Vivian Yan, and William Duan for being
 
 <div class="row">
   <div class="col col--9">
-    <img src="{attach}../images/googlescholar/foryou_compact.png"/>
+    <img src="{attach}/images/googlescholar/foryou_compact.png"/>
   </div>
   <div class="col">
     <b> For You Page (Compact and Wide, respectively): </b>
@@ -148,7 +148,7 @@ Thank you to my teammates Edward De Leon, Vivian Yan, and William Duan for being
 
 <div class="row">
   <div class="col col--9">
-    <img src="{attach}../images/googlescholar/foryou.png"/>
+    <img src="{attach}/images/googlescholar/foryou.png"/>
   </div>
 </div>
 
@@ -156,7 +156,7 @@ Thank you to my teammates Edward De Leon, Vivian Yan, and William Duan for being
 
 <div class="row">
   <div class="col col--9">
-    <img src="{attach}../images/googlescholar/paperpg.png"/>
+    <img src="{attach}/images/googlescholar/paperpg.png"/>
   </div>
   <div class="col">
     <b> Paper Page: </b>
@@ -169,7 +169,7 @@ Thank you to my teammates Edward De Leon, Vivian Yan, and William Duan for being
 
 <div class="row">
   <div class="col col--9">
-    <img src="{attach}../images/googlescholar/authorpg.png"/>
+    <img src="{attach}/images/googlescholar/authorpg.png"/>
   </div>
   <div class="col">
     <b> Author Page: </b>
@@ -182,7 +182,7 @@ Thank you to my teammates Edward De Leon, Vivian Yan, and William Duan for being
 
 <div class="row">
   <div class="col col--9">
-    <img src="{attach}../images/googlescholar/results.png"/>
+    <img src="{attach}/images/googlescholar/results.png"/>
   </div>
   <div class="col">
     <b> Search Results Page: </b>

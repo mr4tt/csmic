@@ -16,5 +16,5 @@ We will cover:
 - how to search for values
 - how to delete values
 
-![finally done *setting* up this site]({attach}../images/set1p1.png)
-![finally done *setting* up this site]({attach}../images/set1p2.png)
+![finally done *setting* up this site]({attach}/images/set1p1.png)
+![finally done *setting* up this site]({attach}/images/set1p2.png)

@@ -14,7 +14,7 @@ We will cover:
 - how to insert, search, and delete with linear probing
 - how to solve problems with deletion
 
-![i am *set* free til part 3]({attach}../images/set2p1.png)
-![i am *set* free til part 3]({attach}../images/set2p2.png)
-![i am *set* free til part 3]({attach}../images/set2p3.png)
-![i am *set* free til part 3]({attach}../images/set2p4.png)
+![i am *set* free til part 3]({attach}/images/set2p1.png)
+![i am *set* free til part 3]({attach}/images/set2p2.png)
+![i am *set* free til part 3]({attach}/images/set2p3.png)
+![i am *set* free til part 3]({attach}/images/set2p4.png)
