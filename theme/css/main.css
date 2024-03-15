@@ -76,7 +76,7 @@ time {
 }
 
 #container nav {
-  border-bottom: solid 3px #cecece;
+  border-bottom: solid 3px #114B5F;
   padding-bottom: 0.5em;
   font-family: "Ruda", sans-serif;
 }
@@ -129,6 +129,7 @@ time {
   font-style: italic;
   text-decoration: underline;
   text-decoration-style: dotted;
+  color: #1f60e2;
 }
 
 #container main section#list ul {
@@ -406,18 +407,25 @@ blockquote {
   border-left: solid 0.1em #cecece;
   padding: 0.5em 2em;
   position: relative;
-  background-color: #efefef;
-  box-shadow: 0 -1px 0 #bbbbbb inset;
+  background-color: #D5F9B4;
+  box-shadow: 0 -1px 0 #114B5F inset;
 }
 
 blockquote::before {
-  content: "\f10d";
-  font-size: 3em;
+  content: "\f054";
+  font-size: 2em;
   font-family: "FontAwesome";
   color: rgba(192, 192, 192, 0.3);
   position: absolute;
   left: 6px;
-  top: 0;
+  top: 10px;
+}
+
+.floatleft {
+  float: left;
+  margin: 20px 20px 20px 0px;
+  height: 80%;
+  width: 80%
 }
 
 @media only screen and (max-width: 800px) {
@@ -451,4 +459,125 @@ ul.pagination li {
 
 ul.pagination li.active {
   font-weight: bold;
+}
+
+/* stuff below is for picture w text next to it, from wd */
+.items-start {
+  align-items:flex-start;
+}
+.items-center {
+  align-items:center;
+}
+.items-end {
+  align-items:flex-end;
+}
+.justify-start {
+  justify-content:flex-start;
+}
+.justify-center {
+  justify-content:center;
+}
+.justify-end {
+  justify-content:flex-end;
+}
+.row {
+  display:flex;
+  flex-flow:row wrap;
+  margin:0 -1rem;
+}
+.col {
+  flex:1 0;
+  width:100%;
+  padding:0 1rem;
+}
+.col--1 {
+  flex:0 0 8.33%;
+  max-width:8.33%;
+}
+.col--2 {
+  flex:0 0 16.66%;
+  max-width:16.66%;
+}
+.col--3 {
+  flex:0 0 25%;
+  max-width:25%;
+}
+.col--4 {
+  flex:0 0 33.33%;
+  max-width:33.33%;
+}
+.col--5 {
+  flex:0 0 41.66%;
+  max-width:41.66%;
+}
+.col--6_ {
+  flex:0 0 50%;
+  max-width:50%;
+}
+.col--7 {
+  flex:0 0 58.33%;
+  max-width:58.33%;
+}
+.col--8 {
+  flex:0 0 66.66%;
+  max-width:66.66%;
+}
+.col--9 {
+  flex:0 0 75%;
+  max-width:75%;
+}
+.col--10 {
+  flex:0 0 83.33%;
+  max-width:83.33%;
+}
+.col--11 {
+  flex:0 0 91.66%;
+  max-width:91.66%;
+}
+.col--12 {
+  flex:0 0 100%;
+  max-width:100%;
+}
+.col--offset-1 {
+  margin-left:8.33%;
+}
+.col--offset-2 {
+  margin-left:16.66%;
+}
+.col--offset-3 {
+  margin-left:25%;
+}
+.col--offset-4 {
+  margin-left:33.33%;
+}
+.col--offset-5 {
+  margin-left:41.66%;
+}
+.col--offset-6 {
+  margin-left:50%;
+}
+.col--offset-7 {
+  margin-left:58.33%;
+}
+.col--offset-8 {
+  margin-left:66.66%;
+}
+.col--offset-9 {
+  margin-left:75%;
+}
+.col--offset-10 {
+  margin-left:83.33%;
+}
+.col--offset-11 {
+  margin-left:91.66%;
+}
+.col--offset-12 {
+  margin-left:100%;
+}
+
+@media(max-width:768px) {
+  .col {
+    flex-basis:100%;
+    max-width:100%;
+  }
 }
