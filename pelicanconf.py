@@ -2,7 +2,7 @@ AUTHOR = 'mrat'
 SITENAME = 'starly dot dev'
 # SITEURL = "http://localhost:8000"
 # SITEURL = "https://mr4tt.github.io/csmic"
-SITEURL = "starly.dev"
+SITEURL = "https://starly.dev"
 
 PATH = "content"
 
