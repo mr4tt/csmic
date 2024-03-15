@@ -3,7 +3,8 @@ Date: 2024-02-07 8:20pm
 Slug: about-me
 Authors: Mrat
 
-> *your about me sucks* -- A dear reader, 2024
+> your about me sucks
+> — A dear reader, 2024
 
 
 Hello! I am a student at UC San Diego.
