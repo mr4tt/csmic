@@ -41,7 +41,8 @@ ARTICLE_URL = '{date:%Y}/{slug}.html'
 #PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = ['readtime', 'neighbors']
 
-STATIC_PATHS = ['images']
+STATIC_PATHS = ['images', 'extra/CNAME', 'extra/favicon.ico']
+EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'}, 'extra/favicon.ico': {'path': 'favicon.ico'},}
 
 # MENUITEMS = [
 #     ('Google', 'http://www.google.com')
