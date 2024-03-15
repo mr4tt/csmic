@@ -34,7 +34,7 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 THEME = 'themes/Peli-Kiera'
-ARTICLE_PATHS = ['comics']
+ARTICLE_PATHS = ['comics', 'case_studies']
 ARTICLE_SAVE_AS = '{date:%Y}/{slug}.html'
 ARTICLE_URL = '{date:%Y}/{slug}.html'
 

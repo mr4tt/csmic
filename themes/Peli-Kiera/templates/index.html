@@ -12,15 +12,15 @@
                                 <li>
                                     <time datetime="{{ article.date }}">{{ article.date|strftime('%b %d, %Y') }}</time>
                                 </li>
-                                {% if article.readtime %}
+                                <!-- {% if article.readtime %}
                                     <li>
                                         {{ article.readtime.minutes }} min read
                                     </li>
-                                {% endif %}
+                                {% endif %} -->
                             </ul>
                         </aside>
                         <p>
-                            {{ article.summary }}
+                            {% if article.cover %}<img src="{{ article.cover }}" alt="cover photo">{% endif %} {{ article.summary }}
                             <a href="{{ SITEURL }}/{{ article.url }}"><em>Read more...</em></a>
                         </p>
                     </li>
