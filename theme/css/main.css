@@ -97,7 +97,19 @@ time {
 }
 
 #container nav ul li a.active {
-  border-bottom: 0.4em solid #666666;
+  /* border-bottom: 0.4em solid #666666; */
+  position: relative;
+}
+
+#container nav ul li a.active::after {
+  --size: 0.4em;
+  content: '';
+  width: 100%;
+  height: var(--size);
+  background-color: #114B5F;
+  position: absolute;
+  bottom: calc(-1 * var(--size, 0));
+  left: 0;
 }
 
 #container main {
