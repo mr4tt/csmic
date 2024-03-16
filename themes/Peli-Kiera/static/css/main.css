@@ -285,6 +285,14 @@ img {
   box-shadow: 0 3px 3px #bbbbbb;
 }
 
+.no-shadow-image,
+figure.no-shadow img,
+img[src*="no-shadow"] {
+  width: 100%;
+  box-shadow: 0 0px 0px #ffffff;
+  /* i think i need to include 0 box shadow to overwrite things pulled down from img tag? */
+}
+
 .full-image,
 figure.full img,
 img[src*="full"] {
