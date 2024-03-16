@@ -124,7 +124,7 @@ Thank you to my teammates Edward De Leon, Vivian Yan, and William Duan for being
 
 <div class="row">
   <div class="col col--9">
-    <img src="{attach}/images/googlescholar/homepage.png"/>
+    <img src="{attach}/images/googlescholar/homepage.png#no-shadow"/>
   </div>
   <div class="col">
     <b> Home Page: </b>
@@ -137,7 +137,7 @@ Thank you to my teammates Edward De Leon, Vivian Yan, and William Duan for being
 
 <div class="row">
   <div class="col col--9">
-    <img src="{attach}/images/googlescholar/foryou_compact.png"/>
+    <img src="{attach}/images/googlescholar/foryou_compact.png#no-shadow"/>
   </div>
   <div class="col">
     <b> For You Page (Compact and Wide, respectively): </b>
@@ -148,7 +148,7 @@ Thank you to my teammates Edward De Leon, Vivian Yan, and William Duan for being
 
 <div class="row">
   <div class="col col--9">
-    <img src="{attach}/images/googlescholar/foryou.png"/>
+    <img src="{attach}/images/googlescholar/foryou.png#no-shadow"/>
   </div>
 </div>
 
@@ -156,7 +156,7 @@ Thank you to my teammates Edward De Leon, Vivian Yan, and William Duan for being
 
 <div class="row">
   <div class="col col--9">
-    <img src="{attach}/images/googlescholar/paperpg.png"/>
+    <img src="{attach}/images/googlescholar/paperpg.png#no-shadow"/>
   </div>
   <div class="col">
     <b> Paper Page: </b>
@@ -169,7 +169,7 @@ Thank you to my teammates Edward De Leon, Vivian Yan, and William Duan for being
 
 <div class="row">
   <div class="col col--9">
-    <img src="{attach}/images/googlescholar/authorpg.png"/>
+    <img src="{attach}/images/googlescholar/authorpg.png#no-shadow"/>
   </div>
   <div class="col">
     <b> Author Page: </b>
@@ -182,7 +182,7 @@ Thank you to my teammates Edward De Leon, Vivian Yan, and William Duan for being
 
 <div class="row">
   <div class="col col--9">
-    <img src="{attach}/images/googlescholar/results.png"/>
+    <img src="{attach}/images/googlescholar/results.png#no-shadow"/>
   </div>
   <div class="col">
     <b> Search Results Page: </b>
