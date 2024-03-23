@@ -19,7 +19,10 @@ note: i have never done a swe internship, only sysadmin / infosec roles
         - notes on how to do something
         - thoughts on how to accomplish something (eg: to build this pipeline, i need x to connect to y and send data to z)
         - section for jotting down what you need to do the next day / future goals
-      - this is very helpful for final presentations / project report
+        - this is very helpful for final presentations / project report
+    - i also had pages for specific things i'd be working with a lot to note down useful commands
+        - eg: i made a page with useful clickhouse queries and docs i found myself referencing a lot
+    
   
 2. **set up expectations / goals and project timelines asap**
     - understand why your project(s) is important; why / how is your project providing value? can you measure that? what does success look like?
@@ -28,12 +31,12 @@ note: i have never done a swe internship, only sysadmin / infosec roles
    
 3. **talk to people! set up coffee chats with anyone doing anything you find interesting**
     - your manager / team members will help you find people to talk to if you aren't sure who, given a topic / area you want chat about
-    - come with a list of questions you want to talk about; here's [my list](https://docs.google.com/spreadsheets/d/1WzSHwv_hTlsfgAC48OTBDUfOw5NFwRwygPLtYjf2DY4/#blue-link) for coffee chats
+    - come with a list of questions you want to talk about; here's [my list](https://docs.google.com/spreadsheets/d/1WzSHwv_hTlsfgAC48OTBDUfOw5NFwRwygPLtYjf2DY4/){: .blue-link} for coffee chats
     - similarly, if you hear about interesting during stand up, you can just set up a quick meeting with your team member and have them run through it with you 
   
 4. **have nice commits, code, and readme**
     - people are looking at them and judging you based on it because these are the main things you are there to create
-    - might be worth looking at [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/#blue-link) or asking how your mentor wants commits and comments to look like
+    - might be worth looking at [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/){: .blue-link} or asking how your mentor wants commits and comments to look like
     - make everything you create as user friendly as possible
         - note down how to run your code, potential failures and how to remedy them
         - you will not be there to explain how anything works in three months

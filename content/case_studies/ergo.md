@@ -3,8 +3,8 @@ Date: 2022-06-27 10:47am
 Category: Case Studies
 Tags: case-study
 Slug: ergo
-Authors: Mrat
 Summary: Connecting people one event at a time.
+status: hidden
 
 **Timeframe**: March 2022 → June 2022
 
@@ -23,6 +23,7 @@ Imagine a time where you were thrilled to attend a particular event with a coupl
 We created ERGO, a social event app that connects you with people on your friends list and people you may know through others. 
 
 Features:
+
 - Help you find events that friends are planning to attend
 - Notify you when a friend arrives at an event
 - Discover who your friends are going to events with
@@ -36,20 +37,42 @@ Features:
 ERGO's goal is to bring people together through social events and location-based services. When people attend large events, they may not know if their friends are attending until they are notified of their location through social media, mutual friends, or even coincidentally running into them. To solve this problem, we created an app that incorporated location-based services and notifications to simplify the process of finding friends who want to attend events.
 
 After conducting both a literature review and a survey, our presumptions were proven to be true.
- 
+
 For the literature review, we researched how location-based services function and how many applications utilize location features. We found that location-based services are often used for recommending users about locations close to them. These user recommendations may be applied to various services, like dining, routing, and communication. As technology advances, there is a lot of room for location-based services to expand and grow.
 
-Our surveys also provided a lot of insights. **26 out of 28** people already **use application or services that utilize user locations** for specific features. While many people tend to find location-based services useful, they are wary regarding privacy and safety concerns stemming from them. In terms of planning and attending events, 19 out of 21 participants enjoyed attending events with friends, yet **16 out of 21 agreed their plans sometimes or often fall through**. Based on this data, there is an opportunity for a social event application that helps users plan events with friends through chat and location-based functionalities. 
+Our surveys also provided a lot of insights. **26 out of 28** people already **use application or services that utilize user locations** for specific features. While many people tend to find location-based services useful, they are wary regarding privacy and safety concerns stemming from them. In terms of planning and attending events, 19 out of 21 participants enjoyed attending events with friends, yet **16 out of 21 agreed their plans sometimes or often fall through**. 
+
+Based on this data, we saw an opportunity for a social event application that helps users plan events with friends through chat and location-based functionalities. 
 
 ## Design Process
 
-Session 1:
+Our design process for ERGO consisted of two parts: 
+
+- A rough prototyping session (Session 1)
+- A refined prototyping session, conducted with the same participants (Sesson 2)
+  
+### Session 1:
+
+#### Prototype Design
 
 <div class="row">
   <div class="col col--8">
-    Our design process for ERGO consisted mainly of two parts: a rough prototyping session and a refined prototyping session, conducted with the same participants. 
+    We brainstormed the process with Figjam, exploring Figjam functionalities and widgets. It was challenging to decide how to integrate social interactions in an online space without creating an overly complex prototype. 
+    We wanted to simulate the real-world experience of someone attending an event without any prior plans, then finding friends at the event. 
+    <br><br>
+    To accomplish this, we used many Figjam widgets to try mimicking different ways people communicate in real life. 
+    <br><br>
+    The first prototype's steps: 
+    <ul> 
+        <li> Read the instructions </li>
+        <li> Attach your name to the event you'd like to attend </li>
+        <li> Navigate to the map of your chosen event </li>
+        <li> Roll a dice (Figma widget) to determine their role for the round (such as raver or friendless) </li>
+        <li> Act out role with others around you, using chat widgets </li>
+    </ul>
     
-    Our team brainstormed our process through a separate Figjam file, exploring Figjam functionalities and widgets. It was challenging to determine how we would integrate social interactions within an online space, without creating am overly complex prototype. We intended to simulate a real-world situation where people would attend an event alone, and find friends or new people to meet up at the event together. To do this, we used many Figjam widgets to assist us in simulating this process. Participants would begin by first reading the instructions, then attaching their name below an event. We created a limit of 10 participants per event to create equal groups. Participants navigated to the map corresponding to their chosen event and rolled a dice to determine their role for the round. They were asked to play out these roles and use chat widgets to communicate. We repeated this process in our second round.
+    We ran two rounds of scenarios so people would get multiple roles to play. 
+
     <br>
   </div>
   <div class="col">
@@ -57,19 +80,31 @@ Session 1:
   </div>
 </div>
 
-We received a lot of honest feedback on the challenges participants faced in our first prototype. The most common criticism was that our prototype was too confusing; there were too many steps that participants had to quickly understand and do. Our overfamiliarity with the prototype hindered our ability to consider a participant's perspective on the instructions. The steps and roles were overly complex and confusing. We also integrated too many widgets without considering how these may simulate a real-life scenario. 
+#### Results
+
+We received a lot of honest feedback on the challenges participants faced in our first prototype. The most common criticism was that our prototype was too confusing; there were too many steps that participants had to quickly understand and do. Our overfamiliarity with the prototype hindered our ability to consider a participant's perspective on the instructions. The steps and roles were also complex and confusing. We integrated too many widgets, and people had trouble keeping track of everything. 
 
 Furthermore, our team did not have a firm grasp on how we wanted our app to look like, so our simulation explanation to the audience was also convoluted. This meant participants did not have a clear mental model of the experience we were trying to create. All of the feedback we received was very helpful, which allowed for us to iterate and improve our prototype for the future session.
+
+[note: video has actual stats n stuff lol]
 
 [insert session 1 pic/pdf]
 Preview of our first prototyping session, conducted in Figjam.
 
-Session 2:
+### Session 2:
 
-Based on feedback and analysis of the interactions from our first prototype session, we made drastic changes going into our refined prototype. Before creating our refined prototype, our team took the time to solidify our concept for an app, and specifically what exactly we want to simulate for it. Each team member discussed their idea of the app, and how they see a potential situation arising from it. After solidifying our concept, we mainly pivoted from multiple event maps to simple locations within a singular event. To simulate real-world situations, we created a Figma prototype that consisted of various situations and texts with two choices. Based on a participant's choices, they would be directed to a particular Figjam link, which represented a different room based on the scenario they selected. Participants were instructed to do 2 steps once they were in the Figjam. They had to use a group chat to meet up with weaker-tied friends, and decide where they wanted to meet up together. Upon deciding, they could take a picture of themselves or use a star stamp to mark their meet-up location. 
+#### Prototype Design
 
-Our second prototyping session went smoothly and was not overly complex. Participants noted that they understood what was being simulated and enjoyed the prototype overall. 
-We made major improvements from our previous prototyping session. The Figma scenarios were good at simulating real-world choices regarding whether to hang out with friends at a concert. In the Figjams, there were a couple of minor issues. One of the particular Figjam rooms was much more populated than the remaining 3. This made it a bit more difficult for some participants to chat, as some were more hesitant in smaller groups. [something something represents irl] Additionally, there was a slight issue with our initial idea for chatting. Initially,  our team wanted to use a pre-set comment, in which participants could freely chat and reply there without any issues of participants simultaneously typing. Overall, our second prototyping session went very well.
+Based on feedback and analysis of the interactions from our first prototype session, we made drastic changes going into our refined prototype. Before creating our refined prototype, we solidified app concept. Each team member discussed their app ideas and what situations in real life it would apply in. After solidifying our concept, we pivoted from multiple event maps to simple locations within a singular event. To simulate real-world situations, we created a Figma prototype with various situations and texts with two choices. Based on a participant's choices, they would be directed to a particular Figjam link, which represented a different room based on the scenario they selected. Once in the Figjam, participants were to: 
+
+- Use a group chat to meet up with weaker-tied friends, and decide where they wanted to meet up together
+- Mark their preferred meet-up location. 
+
+#### Results
+
+Our second prototyping session went smoothly and was not overly complex due to major improvements from our previous prototyping session. Participants noted that they understood what was being simulated and enjoyed the prototype overall. 
+
+The Figma scenarios were better at simulating real-world choices regarding whether to hang out with friends at a concert. However, the Figjams had a couple of minor issues. One of the Figjam rooms was much more populated than the other three. This made it a bit more difficult for some participants to chat, as some were more hesitant in smaller groups. [something something represents irl] Additionally, there was a slight issue with our initial idea for chatting. Initially,  our team wanted to use a pre-set comment, in which participants could freely chat and reply there without any issues of participants simultaneously typing. Overall, our second prototyping session went very well.
 
 [second prototyping] Preview of one section of our second prototyping session. It was done in both Figma and multiple Figjams.
 
@@ -157,30 +192,29 @@ We made major improvements from our previous prototyping session. The Figma scen
 
 ## Social Structures and Complexities
 
-Through experiences and our team's research, we know finding common interests amongst people in the same social circles has been done before. These are features that are almost expected from social media apps, such as a friends list, liking and subscribing to artists, an explore page of artists and their upcoming events. Liking and sharing posts are also common amongst social media apps. In some applications, social tie strength can be measured through the use of these features. The more activity that one person does within the app that includes other users increases their tie strength.
+Through experiences and our team's research, we know finding common interests amongst people in the same social circles are expected features in many social media apps. These include features like a friends list, liking and subscribing to artists, an explore page of artists and their upcoming events. Liking and sharing posts are also common amongst social media apps. In some applications, social tie strength can be measured through the use of these features. The more activity that one person does within the app that includes other users increases their tie strength.
 
-Now the issue is about users who do not like interacting with apps as much. One way to tell about a weak tie strength is based around the lack of interactivity within the app. However, we can't establish if the real reason that users have weak tie strength either because they do not have the same amount of interest with some people over others, or if those users have a cognitive load that does not allow them to use social media apps at the same rate as those with stronger social ties. There's a possibility that the tie strength is weak is more due to this lack of cognitive load than the lack of interests that two mutually known users 
+Now the issue is about users who do not like interacting with apps as much. One way to tell about a weak tie strength is based around the lack of interactivity within the app. However, we can't establish if the real reason that users have weak tie strength either because they do not have the same amount of interest with some people over others, or if those users have a cognitive load that does not allow them to use social media apps at the same rate as those with stronger social ties. There's a possibility that the tie strength is weak is more due to this lack of cognitive load than the lack of interests that two mutually known users. 
 
-The mix of friends list and in person events will naturally lead mutual friends to be in the same vicinity of each other. By creating that small spark that leads towards them knowing of each other's presence within an event, it leads to a more natural meet up than purposefully going out of your way and taking up cognitive resources to establish communication through manually going through the process of wanting to find others to meet up.
+The mix of friends list and in person events will naturally lead mutual friends to be in the same vicinity of each other. By creating that small spark that leads towards them knowing of each other's presence within an event, it leads to a natural meet up rather than forcing yourself to go out of your way to meet new people.
 
-## Contributions
+## Next Steps
+
+stuff
 
 Thank you to my teammates: Danel Sullivan, Iisha Kshatriya, Keith Lim, and Sergio Ramirez.
 
-### Conducting Research & Pitching Ideas
+My contributions:
 
-**Crystal**, **Danel**, and **Iisha** conducted a literature search on our early concept, which was generally around the topic of location-based services. They each searched for around 3-5 articles and papers to research. Each discussed and wrote down critical information about location-based services. **Keith** and **Sergio** created the user survey and organized the questions to be asked. They worked on also analyzing the results from our survey. **All 5 team members** sent out the survey to collect over 20 responses, as well as pitching ideas. We divided up both the survey data gathering and pitch ideas into 4 per teammate, so each team member collected 4 survey response and also pitched 4 preliminary ideas. 
-
-### Prototyping Sessions
-
-**Crystal**, **Danel**, **Keith**, and **Sergio** discussed the process and worked on each of the prototyping sessions. We established collaboration through weekly meetings. The four of us worked together to create our prototype and the instructions corresponding to it. We reviewed our feedback and interactions in both sessions, and iterated from our first prototyping session to make changes and improvements moving into our second prototyping session. 
-
-### Final Prototype & Portfolio
-
-**Crystal**, **Danel**, **Keith**, and **Sergio** worked on the final prototype. We worked together to decide on how the final prototype will look and the specific features we want in it. **Danel** and **Sergio** both worked on sections of our team portfolio. Each of our **5 team members** all contributed to the final slides, and recorded their assigned sections.
+- Conducted part of the literature search on location based services
+- Pitched preliminary ideas based on survey data
+- Created prototype and further iterations
+- Designed final prototype
+- Worked on final presentation slides
 
 ### Final Presentation
-https://youtu.be/Upzj-sL4XVU
+
+[https://youtu.be/Upzj-sL4XVU](https://youtu.be/Upzj-sL4XVU)
 
 <!-- <figure class="float-left">
     <img src="{attach}/images/ergo/ergoGif.gif">
