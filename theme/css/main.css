@@ -40,6 +40,10 @@ time {
 }
 
 @media only screen and (max-width: 800px) {
+  #container {
+    background-size: auto 600px;
+  }
+  
   #container > * {
     width: auto;
     margin: 0 1.2em;
@@ -299,7 +303,7 @@ img {
   box-shadow: 0 3px 3px #bbbbbb;
 }
 
-.no-shadow-image,
+.no-shadow,
 figure.no-shadow img,
 img[src*="no-shadow"] {
   width: 100%;
