@@ -3,6 +3,7 @@ SITENAME = 'starly dot dev'
 # SITEURL = "http://localhost:8000"
 # SITEURL = "https://mr4tt.github.io/csmic"
 SITEURL = "https://starly.dev"
+# SITESUBTITLE = 'Waiting for something to happen?'
 
 PATH = "content"
 
@@ -35,7 +36,7 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 THEME = 'themes/Peli-Kiera'
-ARTICLE_PATHS = ['comics', 'case_studies']
+ARTICLE_PATHS = ['comics', 'case_studies', "misc"]
 ARTICLE_SAVE_AS = '{date:%Y}/{slug}.html'
 ARTICLE_URL = '{date:%Y}/{slug}.html'
 
