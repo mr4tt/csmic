@@ -20,13 +20,18 @@ time {
 }
 
 #container {
+  --bkgd-svg: url('data:image/svg+xml,<svg id="visual" viewBox="0 0 900 450" width="900" height="450" opacity="0.6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><path d="M0 54L18.8 58.3C37.7 62.7 75.3 71.3 112.8 80.5C150.3 89.7 187.7 99.3 225.2 102.5C262.7 105.7 300.3 102.3 337.8 96.8C375.3 91.3 412.7 83.7 450.2 82.2C487.7 80.7 525.3 85.3 562.8 83C600.3 80.7 637.7 71.3 675.2 69.2C712.7 67 750.3 72 787.8 77C825.3 82 862.7 87 881.3 89.5L900 92L900 0L881.3 0C862.7 0 825.3 0 787.8 0C750.3 0 712.7 0 675.2 0C637.7 0 600.3 0 562.8 0C525.3 0 487.7 0 450.2 0C412.7 0 375.3 0 337.8 0C300.3 0 262.7 0 225.2 0C187.7 0 150.3 0 112.8 0C75.3 0 37.7 0 18.8 0L0 0Z" fill="%2381d2b9"></path><path d="M0 66L18.8 61.2C37.7 56.3 75.3 46.7 112.8 45.7C150.3 44.7 187.7 52.3 225.2 61.7C262.7 71 300.3 82 337.8 82.7C375.3 83.3 412.7 73.7 450.2 72.8C487.7 72 525.3 80 562.8 79C600.3 78 637.7 68 675.2 69.7C712.7 71.3 750.3 84.7 787.8 81C825.3 77.3 862.7 56.7 881.3 46.3L900 36L900 0L881.3 0C862.7 0 825.3 0 787.8 0C750.3 0 712.7 0 675.2 0C637.7 0 600.3 0 562.8 0C525.3 0 487.7 0 450.2 0C412.7 0 375.3 0 337.8 0C300.3 0 262.7 0 225.2 0C187.7 0 150.3 0 112.8 0C75.3 0 37.7 0 18.8 0L0 0Z" fill="%23a7e7b6"></path><path d="M0 40L18.8 39.8C37.7 39.7 75.3 39.3 112.8 33.3C150.3 27.3 187.7 15.7 225.2 18.2C262.7 20.7 300.3 37.3 337.8 46.5C375.3 55.7 412.7 57.3 450.2 53.8C487.7 50.3 525.3 41.7 562.8 32.3C600.3 23 637.7 13 675.2 9.5C712.7 6 750.3 9 787.8 11.2C825.3 13.3 862.7 14.7 881.3 15.3L900 16L900 0L881.3 0C862.7 0 825.3 0 787.8 0C750.3 0 712.7 0 675.2 0C637.7 0 600.3 0 562.8 0C525.3 0 487.7 0 450.2 0C412.7 0 375.3 0 337.8 0C300.3 0 262.7 0 225.2 0C187.7 0 150.3 0 112.8 0C75.3 0 37.7 0 18.8 0L0 0Z" fill="%23d5f9b4"></path></svg>');
+
   margin: 0;
   padding: 0;
   max-width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* background-color: #ffffff; background color of whole page*/
+  
+  background-image: var(--bkgd-svg);
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 #container > * {
@@ -139,6 +144,14 @@ time {
 }
 
 #container p a {
+  font-style: italic;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  color: #1f60e2;
+}
+
+.blue-link,
+a[href*="blue-link"] {
   font-style: italic;
   text-decoration: underline;
   text-decoration-style: dotted;
