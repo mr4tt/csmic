@@ -26,6 +26,7 @@ time {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  /* background-color: #ffffff; background color of whole page*/
 }
 
 #container > * {
