@@ -3,7 +3,7 @@ Date: 2024-02-07 8:20pm
 Category: Data Structures
 Tags: sets
 Slug: sets1
-Authors: Mrat
+Imgfolder: comics
 Summary: How do sets work? 
 
 We are going to investigate the basics of a set. 
@@ -16,5 +16,5 @@ We will cover:
 - how to search for values
 - how to delete values
 
-![finally done *setting* up this site]({attach}/images/set1p1.png)
-![finally done *setting* up this site]({attach}/images/set1p2.png)
+![finally done *setting* up this site]({attach}/images/comics/set1p1.png)
+![finally done *setting* up this site]({attach}/images/comics/set1p2.png)

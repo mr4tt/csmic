@@ -3,7 +3,8 @@ Date: 2023-04-07 10:47am
 Category: Case Studies
 Tags: case-study
 Slug: google-scholar
-Authors: Mrat
+Imgfolder: googlescholar
+opengraph_image: cover.png
 Summary: How can we personalize Google Scholar to accommodate researchers of different experience levels?
 
 **Timeframe**: January 2023 → March 2023

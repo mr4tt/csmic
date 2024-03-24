@@ -3,6 +3,8 @@ Date: 2022-06-27 10:47am
 Category: Case Studies
 Tags: case-study
 Slug: ergo
+Imgfolder: ergo
+opengraph_image: cover.png
 Summary: Connecting people one event at a time.
 status: hidden
 

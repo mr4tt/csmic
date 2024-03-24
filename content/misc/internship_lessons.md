@@ -8,19 +8,19 @@ status: hidden
 
 ## some lessons from my internships
 
-note: i have never done a swe internship, only sysadmin / infosec roles
+note: i have never done a swe internship
 
 ---
 
 1. **document, document, document**
     - i made day to day logs where i could dump notes from the day, which included things like:
         - running log of what i accomplished / meetings i went to (with meeting notes)
-        - anything i needed to copy paste (like list of server names)
-        - notes on how to do something
-        - thoughts on how to accomplish something (eg: to build this pipeline, i need x to connect to y and send data to z)
+        - anything i needed to copy paste (eg: list of server names)
+        - notes on how to do something (eg: how to spin up a new server)
+        - thoughts on how to accomplish something (eg: to build this pipeline, i need x to connect to y server and send data to z)
         - section for jotting down what you need to do the next day / future goals
         - this is very helpful for final presentations / project report
-    - i also had pages for specific things i'd be working with a lot to note down useful commands
+    - i also had pages for specific tools i'd be working with a lot to note down useful commands
         - eg: i made a page with useful clickhouse queries and docs i found myself referencing a lot
     
   
@@ -32,7 +32,7 @@ note: i have never done a swe internship, only sysadmin / infosec roles
 3. **talk to people! set up coffee chats with anyone doing anything you find interesting**
     - your manager / team members will help you find people to talk to if you aren't sure who, given a topic / area you want chat about
     - come with a list of questions you want to talk about; here's [my list](https://docs.google.com/spreadsheets/d/1WzSHwv_hTlsfgAC48OTBDUfOw5NFwRwygPLtYjf2DY4/){: .blue-link} for coffee chats
-    - similarly, if you hear about interesting during stand up, you can just set up a quick meeting with your team member and have them run through it with you 
+    - similarly, if you hear about interesting projects during stand up, you can set up a quick meeting with your team member and have them run through it with you 
   
 4. **have nice commits, code, and readme**
     - people are looking at them and judging you based on it because these are the main things you are there to create
