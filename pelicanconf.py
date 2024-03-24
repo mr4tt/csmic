@@ -34,7 +34,7 @@ SOCIAL = (
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
+RELATIVE_URLS = False
 THEME = 'themes/Peli-Kiera'
 ARTICLE_PATHS = ['comics', 'case_studies', "misc"]
 ARTICLE_SAVE_AS = '{date:%Y}/{slug}.html'
