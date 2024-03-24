@@ -6,26 +6,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
-
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="starly.dev" />
+        
         {% if article is defined %}
         <meta property="og:type" content="article" />
         <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}" />
         <meta property="og:title" content="{{ article.title | replace("\"", "&quot;") }}" />
+        <meta name="twitter:title" content="{{ article.title | replace("\"", "&quot;") }}" />
         <meta property="og:description" content="{{ article.summary}}" />
+        <meta name="twitter:description" content="{{ article.summary}}" />
         <meta property="og:image" content="{% if article.opengraph_image is defined %}{{ SITEURL }}/images/{{ article.imgfolder }}/{{ article.opengraph_image }}{% else %}{{ SITEURL }}/extra/og-default.png{% endif %}" />
+        <meta name="twitter:image" content="{% if article.opengraph_image is defined %}{{ SITEURL }}/images/{{ article.imgfolder }}/{{ article.opengraph_image }}{% else %}{{ SITEURL }}/extra/og-default.png{% endif %}" />
         {% elif page is defined %}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{ SITEURL }}/{{ page.url }}" />
         <meta property="og:title" content="{{ SITENAME }} - {{ page.title | replace("\"", "&quot;") }}" />
+        <meta name="twitter:title" content="{{ SITENAME }} - {{ page.title | replace("\"", "&quot;") }}" />
         <meta property="og:description" content="Welcome to my {{ page.title }}" />
+        <meta name="twitter:description" content="Welcome to my {{ page.title }}" />
         <!-- <meta property="og:image" content="{{ SITEURL }}/images/{% if page.opengraph_image is defined %}{{ page.opengraph_image }}{% else %}og-default.png{% endif %}" /> -->
         <meta property="og:image" content="{{ SITEURL }}/extra/og-default.png" />
+        <meta name="twitter:image" content="{{ SITEURL }}/extra/og-default.png" />
         {% else %}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{ SITEURL }}/{{ output_file }}" />
         <meta property="og:title" content="{{ SITENAME }}" />
+        <meta name="twitter:title" content="{{ SITENAME }}" />
         <meta property="og:description" content="Welcome to starly.dev!" />
+        <meta name="twitter:description" content="Welcome to starly.dev!" />
         <meta property="og:image" content="{{ SITEURL }}/extra/og-default.png" />
+        <meta name="twitter:image" content="{{ SITEURL }}/extra/og-default.png" />
         {% endif %}
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
