@@ -4,12 +4,10 @@ Category: Misc
 Tags: misc
 Slug: intern-lessons
 Summary: Some lessons from my previous internships
-status: hidden
 
 ## some lessons from my internships
 
-these are some things i found useful through my internships and are probably good guidelines for anyone doing one.
-
+these are things i found useful through my internships and are probably good guidelines for anyone doing one.
 
 ---
 
@@ -49,17 +47,18 @@ these are some things i found useful through my internships and are probably goo
     - do not spend too much time rabbit holing into tools or the codebase at the expense of doing things 
 
 6. **ask good questions**
+    - ask for lots of help if you need it! it's more productive to ask than spend an hour hunting online for an answer 
     - make sure to google your question before you ask
-        - if you didn't find anything, ask and mention what you found when googling 
-    - anything else i have to say is [said](https://jvns.ca/blog/good-questions/){: .blue-link} [better](https://jvns.ca/blog/2021/10/21/how-to-get-useful-answers-to-your-questions/){: .blue-link} by julia evans
+        - if you didn't find anything useful, ask for help and mention what you discovered online
+    - anything else i have to say has been said better by julia evans: [(1)](https://jvns.ca/blog/good-questions/){: .blue-link} [(2)](https://jvns.ca/blog/2021/10/21/how-to-get-useful-answers-to-your-questions/){: .blue-link}
 
 7. **if you find something annoying, see if you can quickly automate it**
     - bash is your friend
-    - if you can't do it quickly, ask your mentor if it's worthwhile to automate it so other people can use your script
+    - if you can't do it quickly, ask your mentor if it's worthwhile to spend time automating it so other people can use your script
 
 8. **socialize with other interns, go to intern events**
     - at least there's free food
 
 ---
 
-note: i have never done a swe internship. make of that what you will.
+note: i have never done a swe internship. make of this what you will.
