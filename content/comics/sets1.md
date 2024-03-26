@@ -1,6 +1,6 @@
 Title: Introduction to Sets
 Date: 2024-02-07 8:20pm
-Category: Data Structures
+Category: Comics
 Tags: sets
 Slug: sets1
 Imgfolder: comics

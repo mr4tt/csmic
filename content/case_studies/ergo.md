@@ -1,6 +1,6 @@
 Title: Ergo
 Date: 2022-06-27 10:47am
-Category: Case Studies
+Category: Portfolio
 Tags: case-study
 Slug: ergo
 Imgfolder: ergo

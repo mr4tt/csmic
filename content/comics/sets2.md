@@ -1,6 +1,6 @@
 Title: Sets: How to Get Around Hash Collisions
 Date: 2024-02-14 8:46pm
-Category: Data Structures
+Category: Comics
 Tags: sets
 Slug: sets2
 Imgfolder: comics

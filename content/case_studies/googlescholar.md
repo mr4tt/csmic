@@ -1,6 +1,6 @@
 Title: Personalizing Google Scholar
 Date: 2023-04-07 10:47am
-Category: Case Studies
+Category: Portfolio
 Tags: case-study
 Slug: google-scholar
 Imgfolder: googlescholar
