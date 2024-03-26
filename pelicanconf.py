@@ -26,9 +26,10 @@ LINKS = (
     ("You can modify those links in your config file", "#"),
 )
 
-# Social widget
+# Social widget, use the fontawesome icon label to have it show on your website
 SOCIAL = (
-    ("github", "https://github.com/mr4tt"),
+    ("fa-brands fa-github", "https://github.com/mr4tt"),
+    ("fa-regular fa-envelope", "mailto:hello.mrat@gmail.com")
 )
 
 DEFAULT_PAGINATION = 10
