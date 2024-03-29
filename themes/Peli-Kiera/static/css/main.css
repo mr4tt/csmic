@@ -30,7 +30,8 @@ time {
   flex-direction: column;
   background-color: #EFE3BD37; 
   
-  background-image: var(--bkgd-svg), url( 'cat-prints.svg' );
+  /* background-image: var(--bkgd-svg), url( 'cat-prints.svg' ); */
+  background-image: var(--bkgd-svg), url( 'bird-prints.svg' );
   background-repeat: no-repeat;
   background-size: contain, auto;
   background-position: top, bottom right;
