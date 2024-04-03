@@ -38,8 +38,7 @@
         <meta property="og:image" content="{{ SITEURL }}/extra/og-default.png" />
         <meta name="twitter:image" content="{{ SITEURL }}/extra/og-default.png" />
         {% endif %}
-        <script defer src="https://umami.starly.dev/script.js" data-website-id="cb81555d-d5b0-4999-89aa-7ca178820519"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+        <script defer src="https://umami.starly.dev/script.js" data-website-id="1c0e4704-fd15-4764-8b0a-bb7c925ea6d1"></script>        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda"/>
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/{{ CSS_FILE }}"/>
@@ -59,7 +58,7 @@
         {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
             <ul class="social-media">
                 {% for name, link in SOCIAL %}
-                    <li><a href="{{ link }}" target="_blank"><i class="{{ name }}" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ link }}" target="_blank" data-umami-event="{{ name }}"><i class="{{ name }}" aria-hidden="true"></i></a></li>
                 {% endfor %}
                 {% if FEED_ALL_ATOM %}
                     <li><a href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate"><i class="fa fa-rss fa-lg" aria-hidden="true"></i></a></li>
@@ -78,12 +77,12 @@
             {% endfor %}
             {% if DISPLAY_CATEGORIES_ON_MENU %}
                 {% for cat, null in categories %}
-                    <li><a {% if cat==category %} class="active" {% endif %}href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                    <li><a {% if cat==category %} class="active" {% endif %}href="{{ SITEURL }}/{{ cat.url }}" data-umami-event="{{ cat }}">{{ cat }}</a></li>
                 {% endfor %}
             {% endif %}
             {% if DISPLAY_PAGES_ON_MENU %}
                 {% for p in pages %}
-                    <li><a {% if p==page %} class="active" {% endif %}href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+                    <li><a {% if p==page %} class="active" {% endif %}href="{{ SITEURL }}/{{ p.url }}" data-umami-event="{{ p.title }}">{{ p.title }}</a></li>
                 {% endfor %}
             {% endif %}
         </ul>

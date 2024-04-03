@@ -159,7 +159,7 @@ time {
 }
 
 .blue-link,
-a[href*="blue-link"] {
+a {
   font-style: italic;
   text-decoration: underline;
   text-decoration-style: dotted;
