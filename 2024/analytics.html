@@ -16,8 +16,7 @@
         <meta name="twitter:description" content="<p>How I set up website analytics tracking with Umami</p>" />
         <meta property="og:image" content="https://starly.dev/extra/og-default.png" />
         <meta name="twitter:image" content="https://starly.dev/extra/og-default.png" />
-        <script defer src="https://umami.starly.dev/script.js" data-website-id="cb81555d-d5b0-4999-89aa-7ca178820519"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+        <script defer src="https://umami.starly.dev/script.js" data-website-id="1c0e4704-fd15-4764-8b0a-bb7c925ea6d1"></script>        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda"/>
         <link rel="stylesheet" type="text/css" href="https://starly.dev/theme/css/main.css"/>
@@ -51,10 +50,8 @@
     <header>
         <h1><a href="https://starly.dev/">starly dot dev</a></h1>
             <ul class="social-media">
-                    <li><a href="https://github.com/mr4tt" target="_blank"><i class="fa-brands fa-github" data-umami-event="click fa-brands fa-github"
-                        aria-hidden="true"></i></a></li>
-                    <li><a href="mailto:hello.mrat@gmail.com" target="_blank"><i class="fa-regular fa-envelope" data-umami-event="click fa-regular fa-envelope"
-                        aria-hidden="true"></i></a></li>
+                    <li><a href="https://github.com/mr4tt" target="_blank" data-umami-event="fa-brands fa-github"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
+                    <li><a href="mailto:hello.mrat@gmail.com" target="_blank" data-umami-event="fa-regular fa-envelope"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a></li>
             </ul>
         <p><em></em></p>
     </header>
@@ -63,7 +60,7 @@
                     <li><a href="https://starly.dev/category/comics.html" data-umami-event="Comics">Comics</a></li>
                     <li><a  class="active" href="https://starly.dev/category/misc.html" data-umami-event="Misc">Misc</a></li>
                     <li><a href="https://starly.dev/category/portfolio.html" data-umami-event="Portfolio">Portfolio</a></li>
-                    <li><a href="https://starly.dev/pages/about-me.html" data-umami-event="About Me" >About Me</a></li>
+                    <li><a href="https://starly.dev/pages/about-me.html" data-umami-event="About Me">About Me</a></li>
         </ul>
     </nav>
 <main>
@@ -88,24 +85,27 @@
         </aside>
         <h2>title</h2>
 <p>This website is built using Pelican, hosted on Github Pages, and now has analytics from <a class="blue-link" href="https://umami.is/">Umami</a> (is that how you seo?).</p>
-<p>Analytics dashboard <a href="[link](https://umami.starly.dev/share/TdMfrtyBhhsVEdbJ/starly.dev)">here</a>. </p>
+<p>Analytics dashboard <a href="https://umami.starly.dev/share/hNfhWdonj5bA5dBj/starly.dev">here</a>. </p>
 <p>Umami is an open source metrics collecterer (?) from people who visit your website, focused on privacy. Google Analytics does the same thing but after two minutes of Googling it, I decided I didn't want to make an account. And lack of privacy and GDPR non-compliant or something. </p>
 <p>There's other Google Analytics alternatives, but they cost money, so I didn't get very far down their home pages. </p>
 <h2>Set up</h2>
 <ul>
 <li>i am using Ubuntu 23.10 on a Digital Ocean instance</li>
 <li>install Node.js</li>
-<li>install PostgreSQL</li>
+<li>install PostgreSQL<ul>
+<li>you can also use MySQL, but this post uses postgres</li>
+</ul>
+</li>
 <li>install Nginx</li>
 </ul>
-<p><a href="https://umami.is/docs/install">actual install docs from umami here</a></p>
+<p>actual install docs from umami <a href="https://umami.is/docs/install">here</a></p>
 <ol>
-<li><code>corepack enable</code><ul>
+<li>run <code>corepack enable</code><ul>
 <li>adds yarn binary to path </li>
 </ul>
 </li>
 </ol>
-<p><a href="https://yarnpkg.com/getting-started/install">yarn install docs</a></p>
+<p>yarn installation docs <a href="https://yarnpkg.com/getting-started/install">here</a></p>
 <ol>
 <li>
 <p>Set up umami</p>
@@ -121,8 +121,8 @@
 <li>
 <p>set up postgres</p>
 <ul>
-<li><code>createdb -U postgres --host=localhost -p 5432 umami</code> to create a db called umami</li>
-<li>create a .env file with your connection string <ul>
+<li><code>createdb -U postgres --host=localhost umami</code> to create a db called umami</li>
+<li>create a <code>.env</code> file in the cloned umami folder with your connection string <ul>
 <li>DATABASE_URL=postgresql://[USERNAME]:[PASSWORD]@[DB_LOCATION]/[DATABASE_NAME]</li>
 <li>in my case, my file had <code>DATABASE_URL=postgresql://username:password@localhost:5432/umami</code></li>
 </ul>
@@ -133,7 +133,7 @@
 <p>build</p>
 <ul>
 <li><code>yarn build</code><ul>
-<li>note: i needed to configure more swap on my poor server, building eats a lot of RAM</li>
+<li>note: i needed to configure more swap on my poor server, building eats a lot of memory</li>
 </ul>
 </li>
 <li>some optional things:<ul>
@@ -147,10 +147,17 @@
 <p>start </p>
 <ul>
 <li><code>npm start</code></li>
+<li>optional: use pm2, a process manager, to manage your umami instance<ul>
+<li>the steps below will install pm2 globally, start the umami instance, and save it so you can restart it next time </li>
+<li><code>npm install pm2 -g</code></li>
+<li><code>pm2 start npm --name umami -- start</code> (make sure you're in the umami folder before running)</li>
+<li><code>pm2 save</code></li>
+</ul>
+</li>
 <li>go to http://[IP]:3500/</li>
 <li>log in:<ul>
-<li>username admin</li>
-<li>password umami</li>
+<li>username: admin</li>
+<li>password: umami</li>
 </ul>
 </li>
 <li>go to settings to change your password</li>
@@ -159,9 +166,15 @@
 <li>
 <p>set up site</p>
 <ul>
-<li></li>
+<li>go to settings &gt; websites</li>
+<li>add website<ul>
+<li>name: can be anything you want (ex: starly)</li>
+<li>domain: your website domain (ex: starly.dev)</li>
 </ul>
 </li>
+</ul>
+</li>
+<li></li>
 </ol>
 <p>Next, I started my Umami instance. I had to log in; I suppose that means I made an account somewhere along the way. There goes my reason for not using Google Analytics. </p>
     </article>
