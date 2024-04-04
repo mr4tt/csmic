@@ -1065,13 +1065,9 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         bubble.style.textDecoration = parentNodeStyle.textDecoration;
 
         // A speech-bubble arrow, positioned at X of *where you clicked*???
-        let arrow = document.createElement("div");
-        arrow.className = "nutshell-bubble-arrow";
-        bubble.appendChild(arrow);
 
         // ARROW & BUBBLE COLOR. Background is background, Border is font color...
         bubble.style.borderColor = parentNodeStyle.color;
-        arrow.style.borderBottomColor = parentNodeStyle.color;
         // HACK... keep bubbling up until you get a parent with a non-transparent BG color (not needed when bg color is manually set)
         // let bgColor = parentNodeStyle.backgroundColor,
         let bgColor = "#D5F9B4" //,
@@ -1086,7 +1082,6 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         //     bgColor = '#fff'; // worst case, default to white.
         // }
 
-        arrow.style.setProperty('--arrow-background', bgColor);
         bubble.style.background = bgColor;
 
         // Position the arrow, starting at 20px left of the click...
@@ -1117,7 +1112,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             if(arrowX > paragraphWidth-33) arrowX = paragraphWidth-33; // right
 
             // Finally, place that arrow.
-            arrow.style.left = arrowX+"px";
+            bubble.style.setProperty("--y-position", arrowX + "px");
         }
 
         // The Overflow container
@@ -1234,22 +1229,16 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
             // NOW close it.
             setTimeout(()=>{
+                close.style.color = "transparent";
                 overflow.setAttribute("mode","closing");
                 overflow.style.height = "0px";
             },1);
-
-            setTimeout(()=>{
-                bubble.style.border = "0px";
-                close.style.color = "transparent";
-                arrow.setAttribute("mode","closing");
-                arrow.style.setProperty("--arrow-height", "0px");
-            },ANIM_TIME + 1);
 
             // Afterwards, delete node.
             setTimeout(()=>{
                 bubble.parentNode.removeChild(bubble);
                 expandable.setAttribute("mode", "closed"); // and tell Expandable to show it, too
-            }, ANIM_TIME + 100 +2); // 100 is the time the arrow anim takes, set in css
+            }, ANIM_TIME +1);
 
             // Count the killed bubbles inside, subtract from Nutshell._nutshellsOpen
             Nutshell._nutshellsOpen -= bubble.querySelectorAll('.nutshell-bubble').length;
@@ -1582,6 +1571,9 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     ***************************************************/
 
     .nutshell-bubble{
+        --y-position: 30px;
+        --top-position: -22px;
+
         /* Gon' stretch out */
         display: inline-block;
         width: 100%;
@@ -1602,36 +1594,17 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
     }
 
-    /* Arrow outline */
-    .nutshell-bubble-arrow{
-        --arrow-height: 20px;
-        width: 0;
-        height: 80;
-        border-left: 20px solid transparent;
-        border-right: 20px solid transparent;
-        border-bottom: var(--arrow-height) solid #000;
-        /*border-bottom: 20px solid #ddd;*/
+    .nutshell-bubble::before{
+        clip-path: polygon(50% 40%, 100% 100%, 0 100%);
+        width: 24px;
+        height: 18px;
+        background-color: #000;
         position: absolute;
-        top: -20px;
-        pointer-events: none; /* don't block clicking */
-    }
-
-    /* Arrow white */
-    .nutshell-bubble-arrow::after{
-        --arrow-background: #D5F9B4; /* css var */
-        content: "";
-        width: 0;
-        height: 0;
-        border-left: 20px solid transparent;
-        border-right: 20px solid transparent;
-        border-bottom: var(--arrow-height) solid #fff; /* fallback */
-        border-bottom: var(--arrow-height) solid var(--arrow-background); /* css var */
-        position: absolute;
-        top: 1.5px;
-        left: -20px;
-        pointer-events: none; /* don't block clicking */
-
-        transition: border-bottom-width 0.1s linear; /* Snap to close */
+        content: '';
+        top: var(--top-position);
+        left: var(--y-position);
+        background-color: #D5F9B4;
+        border: 5px solid #D5F9B4;
     }
 
     /* Overflow: contains the head/section/food */
@@ -1644,12 +1617,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     .nutshell-bubble-overflow[mode=closing]{
         transition: height 0.3s ease-in; /* Snap to close */
     }
-
-    .nutshell-bubble-arrow[mode=closing]{
-        // transition: border-bottom-width 0.3s ease-in; /* Snap to close */
-        transition: border-bottom-width 0.1s linear;
-    }
-
+    
     /* Head: Embed Button, show on hover */
     .nutshell-bubble-overflow-embed-button{
         position: absolute;

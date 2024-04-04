@@ -8,11 +8,10 @@
 ██║░╚███║╚██████╔╝░░░██║░░░██████╔╝██║░░██║███████╗███████╗███████╗
 ╚═╝░░╚══╝░╚═════╝░░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝
 
-v1.0.7 - "Baby's First XSS Vulnerability"
+v1.0.2 - "Even More Bugs Were Squashed"
 
 ( NOTE TO SELF: When updating version, remember to edit... )
-( this js file's "Nutshell.version", include_nutshell.js   )
-( and README.md what translations finished                 )
+( this js file, include_nutshell.js                        )
 ( ACTUALLY MAKE A RELEASE ON GITHUB                        )
 
 You know how in Memento, the amnesia guy tattoos reminders on his body?
@@ -121,24 +120,14 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
 *************************************************************************/
 
-/* my notes: 
-- removing other langs
-- changing nutshell arrow color (1612 css var, moved from above)
-- nutshell open/closing animation (line 1631) (how do i make closing work)
-- changing nutshell bg color (line 1078)
-*************************************************************************/
-
-
-
 {
 
     // it me
     window.Nutshell = {};
 
     // Version! & CDN
-    Nutshell.version = 'v1.0.7';
-    //Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell@${Nutshell.version}/nutshell.js`;
-    Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.js`;
+    Nutshell.version = '1.0.2';
+    Nutshell.cdn = `https://cdn.jsdelivr.net/gh/ncase/nutshell@${Nutshell.version}/nutshell.js`;
 
     // What's THIS page's URL? (WITH QUERYSTRING)
     Nutshell.thisPageURL = location.protocol + '//' + location.host + location.pathname + location.search;
@@ -200,8 +189,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
     Nutshell.options = {
         startOnLoad: true, // Start Nutshell on load? (default: true)
-        lang: 'en', // Language (default: 'en', which is English)
-        dontEmbedHeadings: false, // If 'true', removes the "embed this as a nutshell" option on headings
+        lang: 'en' // Language (default: 'en', which is English)
     };
 
     // A semantic sugar function to override options
@@ -245,6 +233,207 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             endPunctuation: /[.?!]\s/g
 
         },
+        eo: {
+            // Button text
+            closeAllNutshells: `fermu ĉiujn nuksŝeloj`,
+            learnMore: `lernu pli`,
+
+            // Nutshell errors...
+            notFoundError: `Ho ne, la paĝo ne estis trovita! Kontroli denove la ligilo:`,
+            wikiError: `Ho ne, Vikipedio ne ŝargiĝas, aŭ la ligilo estas rompita. Bonvolu kontroli denove:`,
+            corsError: `Ho ne, la paĝo estis trovita sed ne transdonis ĝian enhavon! Kontrolu, ke la alia retejo havas Nutshell instalita aŭ CORS ebligita:`,
+            sectionIDError: `Ho ne, ne ekzistas sekcio kiu kongruas kun la ID #[ID]! Atentu tajperarojn kaj regionajn literumajn diferencojn.`,
+            startTextError: `Ho ne, ne estas paragrafo kiu havas la tekston “[start]”! Atentu tajperarojn.`,
+
+            // Embed modal!
+            embedStep0: `Vi povas enmeti ĉi tion kiel "vastigebla klarigo" en via propra blogo/retejo!
+                            Klaku por antaŭrigardi → [EXAMPLE]`,
+            embedStep1: `Step 1) Kopiu ĉi tiun kodon en la [HEAD] de via retejo: [CODE]`,
+            embedStep2: `Step 2) En via artikolo, kreu ligilon al [LINK]
+                            kaj certigu, ke la ligteksto komenciĝas per :dupunkto,
+                            <a href="#">:kiel tio</a>,
+                            por tiu nuksoŝelo sciu certigi, ke ĝi disvastiĝas.`,
+            embedStep3: `Step 3) Tio estas ĉio, homoj! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
+        },
+        fr: {
+
+            // Button text
+            closeAllNutshells: `fermer toutes les coquilles`,
+
+            // Nutshell errors...
+            notFoundError: `Oh oh, la page n'as pas été trouvée! Lien à vérifier:`,
+            wikiError: `Oh oh, Wikipédia n'envoie rien, ou le lien est cassé. S'il vous plaît, vérifiez:`,
+            corsError: `Oh oh, la page a été trouvée mais refuse de nous donner son contenu! Vérifiez que l'autre site a Nutshell d'installé ou CORS d'activé:`,
+            sectionIDError: `Oh oh, il n'existe pas de section avec l'identifiant #[ID]! Ça pourrait venir d'une faute de frappe ou d'une orthographe d'origine différente.`,
+            startTextError: `Oh oh, il n'existe pas de paragraphe contenant “[start]”! Ça pourrait venir d'une faute de frappe.`,
+
+            // Embed modal!
+            embedStep0: `Vous pouvez insérer ceci comme "explication expansible" dans votre propre blog/site!
+                        Cliquez pour prévisualiser → [EXAMPLE]`,
+            embedStep1: `Étape 1) Copiez ce code dans le [HEAD] de votre site: [CODE]`,
+            embedStep2: `Étape 2) Dans votre article, créez un lien vers [LINK]
+                         et assurez vous que le texte du lien démarre avec :deux-points,
+                         <a href="#">:comme ça</a>,
+                         pour que Nutshell sache que c'est expansible.`,
+            embedStep3: `Step 3) Et voila! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
+
+        },
+        nl: {
+
+            // Button text
+            closeAllNutshells: `sluit alle Nutshells`,
+            learnMore: `leer meer`,
+
+            // Nutshell errors...
+            notFoundError: `Uh oh, deze pagina kon niet worden gevonden! Controleer de link nogmaals:`,
+            wikiError: `Uh oh, Wikipedia kan niet worden geladen, of de link doet het niet. Controleer nogmaals:`,
+            corsError: `Uh oh, de pagina was gevoden, maar wilde zijn content niet doorgeven! Controleer of de andere site Nutshell heeft geïnstalleerd of CORS heeft geactiveerd.`,
+            sectionIDError: `Uh oh, er is geen sectie die overeenkomt met ID #[ID]! Let op tikfouten en alternatieve spellingen.`,
+            startTextError: `Uh oh, er is geen sectie met de tekst “[start]”! Pas op voor tikfouten.`,
+
+            // Embed modal!
+            embedStep0: `Je kunt deze 'uitklapbare uitleg' embedden in je eigen blog/site!
+                         Klik voor een voorbeeld → [EXAMPLE]`,
+            embedStep1: `Stap 1) Kopieer deze code naar de [HEAD] van je site: [CODE]`,
+            embedStep2: `Stap 2) In je artikel, maak een link naar [LINK]
+                         en zorg ervoor dat de link start met een :dubbelepunt,
+                         <a href="#">:zoals dit</a>,
+                         zodat Nutshell weet dat deze link moet uitklappen.`,
+            embedStep3: `Step 3) Dat is alles! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
+
+        },
+        de: {
+
+            // Button text
+            closeAllNutshells: `alle Nutshells schließen`,
+            learnMore: `lern mehr`,
+
+            // Nutshell errors...
+            notFoundError: `Ups, die Seite konnte nicht gefunden werden! Prüfe den Link nochmals:`,
+            wikiError: `Ups, Wikipedia konnt nicht geladen werden, oder der Link ist kaputt. Bitte prüfen:`,
+            corsError: `Ups, die Seite wurde gefunden, hat ihren Inhalt jedoch nicht übergeben! Stelle sicher, dass bei der anderen Site Nutshell installiert oder CORS aktiviert ist:`,
+            sectionIDError: `Ups, es gibt keine Sektion passend zur ID #[ID]! Prüfe auf Schreibfehler & regionsabhängige Unterschiede der Schreibweise.`,
+            startTextError: `Ups, es gibt keinen Absatz mit dem Text “[start]”! Prüfe auf Schreibfehler.`,
+
+            // Embed modal!
+            embedStep0: `Du kannst dies als eine "ausklappbare Erklärung" auf deinem eigenen Blog/deiner eigenen Site einbinden!
+                         Klick für eine Vorschau → [EXAMPLE]`,
+            embedStep1: `Schritt 1) Kopiere diesen Code in den [HEAD] deiner Site: [CODE]`,
+            embedStep2: `Schritt 2) Erzeuge einen Link zu [LINK] in deinem Artikel
+                         und stelle dabei sicher, dass der Linktext mit einem :Doppelpunkt beginnt,
+                         <a href="#">:also so</a>,
+                         sodass Nutshell weiß, dass er ausklappbar sein soll.`,
+            embedStep3: `Step 3) Das wars! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
+
+        },
+        pl: {
+
+            // Button text
+            closeAllNutshells: `zamknij wszystkie nutshelle`,
+            learnMore: `Ucz się więcej`,
+
+            // Nutshell errors...
+            notFoundError: `Ups, nie znaleziono strony! Sprawdź link ponownie:`,
+            wikiError: `Ups, Wikipedia się nie ładuje lub link nie działa. Sprawdź ponownie:`,
+            corsError: `Ups, stronę znaleziono, ale nie przekazała ona swojej treści! Sprawdź, czy tamta witryna ma zainstalowany Nutshell lub włączone CORS:`,
+            sectionIDError: `Ups, żadna sekcja nie pasuje do identyfikatora #[ID]! Zwróć uwagę na literówki i lokalne różnice w pisowni.`,
+            startTextError: `Ups, żaden akapit nie zawiera tekstu “[start]”! Zwróć uwagę na literówki.`,
+
+            // Embed modal!
+            embedStep0: `Możesz to umieścić jako "rozszerzalne wyjaśnienie" na swoim blogu lub stronie!
+                         Kliknij, aby zobaczyć podgląd → [EXAMPLE]`,
+            embedStep1: `Krok 1) Skopiuj ten kod do [HEAD] swojej strony: [CODE]`,
+            embedStep2: `Krok 2) Stwórz w swoim artykule link do [LINK]
+                         i upewnij się, że tekst linku rozpoczyna się :dwukropkiem,
+                         <a href="#">:w ten sposób</a>,
+                         żeby Nutshell wiedział, aby umożliwić jego rozszerzanie.`,
+            embedStep3: `Krok 3) To by było na tyle! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
+
+        },
+		es: {
+
+            // Button text
+            closeAllNutshells: `cerrar todos los nutshells`,
+            learnMore: `aprende más`,
+
+            // Nutshell errors...
+            notFoundError: `¡Ups, no se encontró la página! Verifica el link:`,
+            wikiError: `Ups, Wikipedia no está cargando, o el link está roto. Verifica:`,
+            corsError: `¡Ups, la página se encontró pero esta no entregó su contenido! Verifica que la otra página tenga Nutshell instalado o CORS habilitado:`,
+            sectionIDError: `¡Ups, no se ha encontrado la sección con la ID #[ID]! Verifica que no haya errores de tipeo o diferencias regionales de escritura.`,
+            startTextError: `¡Ups, no hay ningún párrafo con el texto “[start]”! Verifica que no haya errores de tipeo.`,
+
+            // Embed modal!
+            embedStep0: `¡Puedes insertar esto como una “explicación expandible” en tu propio blog o página!
+                         Click para previsualizar → [EXAMPLE]`,
+            embedStep1: `Paso 1) Copia este código en la [HEAD] de tu sitio: [CODE]`,
+            embedStep2: `Paso 2) En tu artículo, añade un link a [LINK]
+                         y asegúrate de que el texto del link comience con :dos puntos,
+                         <a href="#">:así</a>,
+                         para que Nutshell sepa cómo expandirlo.`,
+            embedStep3: `Paso 3) ¡Eso es todo, amigos! 🎉`,
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `.,?!)_~'"’”`,
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[.?!]\s/g
+
+        },
+        zh: {
+
+            // Button text
+            closeAllNutshells: `合上所有的nutshells`,
+            learnMore: `学到更多`,
+
+            // Nutshell errors...
+            notFoundError: `啊 噢, 没有找到网页！请再次检查链接:`,
+            wikiError: `啊 噢, 载入维基百科失败，或者说这个链接是失效了，请再次检查:`,
+            corsError: `啊 噢, 网页找到了，但是它并没有交出它的内容！请检查其他站点是否已经安装了Nutshell或者允许跨域资源共享:`,
+            sectionIDError: `啊 噢, 并没有段落能匹配这个ID #[ID]! 注意拼写错误 & 地区拼写差异。`,
+            startTextError: `啊 噢, 并不存在包含“[start]”文本的段落！请检查拼写错误。`,
+
+            // Embed modal!
+            embedStep0: `你可以将此作为一个可展开的说明嵌入你自己的博客/站点！
+                         点击右侧链接来预览 → [EXAMPLE]`,
+            embedStep1: `第一步)复制这段代码至你站点的[HEAD]中: [CODE]`,
+            embedStep2: `第二步)在你的文章中，创建一个链接链接至[LINK]
+                         并确保链接中的文本以:冒号开头,
+                         <a href="#">:就像这样</a>,
+                         这样，Nutshell就知道要使其可展开。`,
+            embedStep3: `第三步)就这么多，家人们! 🎉`,
+
+
+            // What punctuation (in this language) should we KEEP after an expandable opens?
+            keepPunctuation: `。.,?!)_~'"’”`, // added chinese period
+            // What punctuation (in this language) signifies the END of a sentence? Note, this is a regex.
+            endPunctuation: /[。.?!]\s/g // added chinese period
+
+        }
     };
 
     Nutshell.getLocalizedText = (textID)=>{
@@ -252,6 +441,8 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             dictionary = Nutshell.language[currentLanguage];
         return dictionary[textID];
     }
+
+
 
 
     /////////////////////////////////////////////////////////////////////
@@ -274,8 +465,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
             // Remove colon, replace with animated balls
             let linkText = document.createElement('span');
-            //linkText.innerHTML = ex.innerText.slice(ex.innerText.indexOf(':')+1); // CURSED LINE
-            linkText.innerText = ex.innerText.slice(ex.innerText.indexOf(':')+1);
+            linkText.innerHTML = ex.innerText.slice(ex.innerText.indexOf(':')+1);
             linkText.className = 'nutshell-expandable-text';
             let ballUp = document.createElement('span');
             ballUp.className = 'nutshell-ball-up';
@@ -775,10 +965,6 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
                     // IF NO SECTION ID, give entire article
                     if(!queryString || queryString.trim()==''){
-                        // Hidden sections should still be hidden
-                        Nutshell.hideHeadings(safeEl);
-                        // Folded sections need to convert relative links to absolute
-                        _convertRelativeToAbsoluteLinks("a", "href", url, safeEl);
                         // Article is assumed to be the container of the first <p>
                         let assumedArticle = safeEl.querySelector('p').parentNode;
                         resolve(assumedArticle);
@@ -1072,20 +1258,17 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         // ARROW & BUBBLE COLOR. Background is background, Border is font color...
         bubble.style.borderColor = parentNodeStyle.color;
         arrow.style.borderBottomColor = parentNodeStyle.color;
-        // HACK... keep bubbling up until you get a parent with a non-transparent BG color (not needed when bg color is manually set)
-        // let bgColor = parentNodeStyle.backgroundColor,
-        let bgColor = "#D5F9B4" //,
-        //     tryThisElementNext = p.parentNode,
-        //     failsafe = 10;
-
-        // while(bgColor=='rgba(0, 0, 0, 0)' && tryThisElementNext && tryThisElementNext.tagName && failsafe-->0){
-        //     bgColor = window.getComputedStyle(tryThisElementNext).backgroundColor;
-        //     tryThisElementNext = tryThisElementNext.parentNode;
-        // }
-        // if(bgColor=='rgba(0, 0, 0, 0)'){
-        //     bgColor = '#fff'; // worst case, default to white.
-        // }
-
+        // HACK... keep bubbling up until you get a parent with a non-transparent BG color
+        let bgColor = parentNodeStyle.backgroundColor,
+            tryThisElementNext = p.parentNode;
+            failsafe = 10;
+        while(bgColor=='rgba(0, 0, 0, 0)' && tryThisElementNext && tryThisElementNext.tagName && failsafe-->0){
+            bgColor = window.getComputedStyle(tryThisElementNext).backgroundColor;
+            tryThisElementNext = tryThisElementNext.parentNode;
+        }
+        if(bgColor=='rgba(0, 0, 0, 0)'){
+            bgColor = '#fff'; // worst case, default to white.
+        }
         arrow.style.setProperty('--arrow-background', bgColor);
         bubble.style.background = bgColor;
 
@@ -1128,13 +1311,13 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         bubble.appendChild(overflow);
 
         // Embed Button
-        // let embed = document.createElement('div');
-        // embed.className = 'nutshell-bubble-overflow-embed-button';
-        // embed.innerHTML = `<img src='${Nutshell._dataURIImage}'/>`;
-        // embed.onclick = ()=>{
-        //     Nutshell.showEmbedModal(expandable.href, expandable.textContent);
-        // };
-        // overflow.appendChild(embed);
+        let embed = document.createElement('div');
+        embed.className = 'nutshell-bubble-overflow-embed-button';
+        embed.innerHTML = `<img src='${Nutshell._dataURIImage}'/>`;
+        embed.onclick = ()=>{
+            Nutshell.showEmbedModal(expandable.href, expandable.textContent);
+        };
+        overflow.appendChild(embed);
 
         // Section
         let section = document.createElement('div');
@@ -1142,10 +1325,9 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         overflow.appendChild(section);
 
         // Close Button
-        let close = document.createElement('button');
+        let close = document.createElement('div');
         close.className = 'nutshell-bubble-overflow-close';
         close.innerHTML = '&times;';
-        close.ariaLabel = "Close";
         close.onclick = ()=>{
 
             // Close my parent, which'll also close me
@@ -1238,18 +1420,11 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                 overflow.style.height = "0px";
             },1);
 
-            setTimeout(()=>{
-                bubble.style.border = "0px";
-                close.style.color = "transparent";
-                arrow.setAttribute("mode","closing");
-                arrow.style.setProperty("--arrow-height", "0px");
-            },ANIM_TIME + 1);
-
             // Afterwards, delete node.
             setTimeout(()=>{
                 bubble.parentNode.removeChild(bubble);
                 expandable.setAttribute("mode", "closed"); // and tell Expandable to show it, too
-            }, ANIM_TIME + 100 +2); // 100 is the time the arrow anim takes, set in css
+            }, ANIM_TIME+1);
 
             // Count the killed bubbles inside, subtract from Nutshell._nutshellsOpen
             Nutshell._nutshellsOpen -= bubble.querySelectorAll('.nutshell-bubble').length;
@@ -1290,15 +1465,13 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
                 permalink = Nutshell.thisPageURL+"#"+sectionID;
 
             // Embed button
-            if(!Nutshell.options.dontEmbedHeadings){
-                let embedButton = document.createElement('div');
-                embedButton.className = 'nutshell-heading-embed';
-                embedButton.innerHTML = `<img src='${Nutshell._dataURIImage}'/>`;
-                embedButton.onclick = ()=>{
-                    Nutshell.showEmbedModal(permalink, headingText);
-                };
-                heading.appendChild(embedButton);
-            }
+            let embedButton = document.createElement('div');
+            embedButton.className = 'nutshell-heading-embed';
+            embedButton.innerHTML = `<img src='${Nutshell._dataURIImage}'/>`;
+            embedButton.onclick = ()=>{
+                Nutshell.showEmbedModal(permalink, headingText);
+            };
+            heading.appendChild(embedButton);
 
         });
 
@@ -1431,7 +1604,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         // Step 1: Code for head
         _p1.innerHTML = Nutshell.getLocalizedText("embedStep1")
             .replace(`[HEAD]`, `<span style="font-family:monospace">&lt;head&gt;</span>`)
-            .replace(`[CODE]`, `<input style="width:100%" value="<script src='${Nutshell.cdn}'></script>" onclick="select()"/>`);
+            .replace(`[CODE]`, `<input style="width:100%" value="${Nutshell.cdn}" onclick="select()"/>`);
 
         // Step 2: Link
         _p2.innerHTML = Nutshell.getLocalizedText("embedStep2")
@@ -1512,8 +1685,8 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         min-height: 1em; /* some deal with the devil */
     }
     .nutshell-heading:hover .nutshell-heading-embed{
-        left: 0.25em;
-        opacity: 0.33;
+        left:0.25em;
+        opacity:0.33;
     }
     .nutshell-heading:hover .nutshell-heading-embed:hover{
         opacity:1;
@@ -1523,11 +1696,12 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     EXPANDABLE LINKS
     ***************************************************/
 
-    #container .nutshell-expandable{
-        /* i think this selector changes attributes around the text? */
+    .nutshell-expandable{
+
         /* Boring style to fit parent */
-        color: #58A4B0;
-        text-decoration: underline dotted #58A4B0;
+        color: inherit;
+        text-decoration: none;
+        border-bottom: dotted 1.5px;
 
         /* So those balls work */
         position:relative;
@@ -1538,15 +1712,15 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
     }
     .nutshell-expandable:hover{
+        color: inherit;
         opacity: 0.8;
     }
     .nutshell-expandable .nutshell-expandable-text{
         padding-left: 0.35em; /* Give balls space */
-        font-style: normal;
     }
     /* The balls! */
     .nutshell-ball-up, .nutshell-ball-down{
-        
+
         /* Placed to the left */
         position: absolute;
         display: inline-block;
@@ -1582,6 +1756,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     ***************************************************/
 
     .nutshell-bubble{
+
         /* Gon' stretch out */
         display: inline-block;
         width: 100%;
@@ -1604,34 +1779,31 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
     /* Arrow outline */
     .nutshell-bubble-arrow{
-        --arrow-height: 20px;
         width: 0;
-        height: 80;
+        height: 0;
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
-        border-bottom: var(--arrow-height) solid #000;
+        border-bottom: 20px solid #000;
         /*border-bottom: 20px solid #ddd;*/
         position: absolute;
         top: -20px;
         pointer-events: none; /* don't block clicking */
+        --arrow-background: #fff; /* css var */
     }
 
     /* Arrow white */
     .nutshell-bubble-arrow::after{
-        --arrow-background: #D5F9B4; /* css var */
         content: "";
         width: 0;
         height: 0;
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
-        border-bottom: var(--arrow-height) solid #fff; /* fallback */
-        border-bottom: var(--arrow-height) solid var(--arrow-background); /* css var */
+        border-bottom: 20px solid #fff; /* fallback */
+        border-bottom: 20px solid var(--arrow-background); /* css var */
         position: absolute;
         top: 1.5px;
         left: -20px;
         pointer-events: none; /* don't block clicking */
-
-        transition: border-bottom-width 0.1s linear; /* Snap to close */
     }
 
     /* Overflow: contains the head/section/food */
@@ -1643,11 +1815,6 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     }
     .nutshell-bubble-overflow[mode=closing]{
         transition: height 0.3s ease-in; /* Snap to close */
-    }
-
-    .nutshell-bubble-arrow[mode=closing]{
-        // transition: border-bottom-width 0.3s ease-in; /* Snap to close */
-        transition: border-bottom-width 0.1s linear;
     }
 
     /* Head: Embed Button, show on hover */
@@ -1721,16 +1888,13 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     .nutshell-bubble-overflow-close{
 
         /* A &times; sign */
-        font-family: inherit;
-        font-size: 1rem;
+        /*font-weight:100;*/
         text-align: center;
 
         /* Whole-width bottom */
         position:absolute;
         width:100%;
         bottom:0;
-        border: 0;
-        background: none;
 
         /* A button that gets darker. */
         cursor:pointer;
@@ -1739,7 +1903,6 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
     }
     .nutshell-bubble-overflow-close:hover{
-        background: none;
         opacity:1;
     }
 
