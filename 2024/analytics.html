@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -16,7 +17,7 @@
         <meta name="twitter:description" content="<p>How I set up website analytics tracking with Umami</p>" />
         <meta property="og:image" content="https://starly.dev/extra/og-default.png" />
         <meta name="twitter:image" content="https://starly.dev/extra/og-default.png" />
-        <script defer src="https://umami.starly.dev/script.js" data-website-id="1c0e4704-fd15-4764-8b0a-bb7c925ea6d1"></script>        
+   
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda"/>
@@ -84,84 +85,86 @@
                 </li>
             </ul>
         </aside>
-        <p>This website is built using Pelican, hosted on Github Pages, and now has analytics from <a class="blue-link" href="https://umami.is/">Umami</a>.</p>
+        <script src="https://starly.dev/2024/nutshelldev.js"></script>
+<script>
+Nutshell.setOptions({
+    dontEmbedHeadings: true, // If 'true', removes the "embed this as a nutshell" option on headings
+});
+</script>
+
+<!-- ---
+
+I'll be testing [Nutshell](https://github.com/ncase/nutshell) out! When you see a link like [:this](#note1), click on it to expand it.
+
+--- -->
+
+<p><a href="https://umami.is/">Umami</a>. is an open source analytics provider focused on privacy. This means you can see information about people who visit your website, like their country. </p>
 <p>You can find Starly's analytics dashboard <a href="https://umami.starly.dev/share/hNfhWdonj5bA5dBj/starly.dev">here</a> !</p>
 <hr>
-<p>Umami is an open source metrics collecterer (?) from people who visit your website, focused on privacy. </p>
-<p>Google Analytics does the same thing but after two minutes of Googling it, I decided I didn't want to make an account, nor did I need a lot of their advanced features (who would have thought my tiny blog wouldn't need ad revenue tracking). And lack of privacy and GDPR non-compliant or something. </p>
+<p>Google Analytics does similar things, but I didn't need a lot of their advanced features (who would have thought my tiny blog wouldn't need ad revenue tracking). And lack of privacy and GDPR non-compliant or something. </p>
 <p>There's other Google Analytics alternatives, but they cost money, so I didn't read much of their websites. </p>
+<p>If you're just here to figure out installing Umami without any extra bits, you'll be fine following only the bullet points. </p>
+<hr>
 <h2>Software Requirements</h2>
 <ul>
 <li>i am using Ubuntu 23.10 on a Digital Ocean instance</li>
-<li>install Node.js</li>
-<li>install PostgreSQL<ul>
-<li>you can also use MySQL, but this post uses postgres</li>
+<li>install Node.js, <a class="blue-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04">tutorial</a></li>
+<li>install Nginx, <a class="blue-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04">tutorial</a></li>
+<li>install PostgreSQL, <a class="blue-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-22-04">tutorial</a><ul>
+<li>you can also use MySQL with Umami, but this post uses postgres</li>
 </ul>
 </li>
-<li>install Nginx</li>
 </ul>
-<p>actual install docs from umami <a href="https://umami.is/docs/install">here</a></p>
-<h2>Actual set up</h2>
-<p>To install the necessary packages, we use Yarn (package manager, similar to npm). This is activated with corepack, which comes with our Node.js installation. </p>
-<p>Step by step:</p>
+<p>actual install docs from umami are <a href="https://umami.is/docs/install">here</a></p>
+<h2>Steps to install and run Umami</h2>
 <ol>
-<li>run <code>corepack enable</code><ul>
-<li>adds yarn binary to path </li>
+<li>
+<p><strong>set up yarn</strong></p>
+<ul>
+<li>run <code>corepack enable</code></li>
 </ul>
+<p>We use Yarn (package manager, similar to npm) to install necessary packages. This is activated with corepack, which comes with our Node.js installation. </p>
+<p>For more info, yarn installation docs are <a class="blue-link" href="https://yarnpkg.com/getting-started/install">here</a></p>
 </li>
-</ol>
-<p>yarn installation docs <a href="https://yarnpkg.com/getting-started/install">here</a></p>
-<p>To set up Umami, download the repo and run <code>yarn</code> inside, which looks at the <code>package.json</code> file in the repo and downloads the packages specified there. </p>
-<ol>
-<li>set up umami<ul>
+<li>
+<p><strong>set up umami</strong></p>
+<ul>
 <li><code>git clone https://github.com/umami-software/umami.git</code></li>
 <li><code>cd umami</code></li>
-<li><code>yarn</code><ul>
-<li>installs packages</li>
+<li><code>yarn</code></li>
 </ul>
-</li>
-</ul>
-</li>
-</ol>
-<p>test</p>
-<ol>
-<li>
-<p>set up postgres</p>
-<ul>
-<li><code>createdb -U postgres --host=localhost umami</code> to create a db called umami</li>
-<li>create a <code>.env</code> file in the cloned umami folder with your connection string <ul>
-<li>DATABASE_URL=postgresql://[USERNAME]:[PASSWORD]@[DB_LOCATION]/[DATABASE_NAME]</li>
-<li>in my case, my file had <code>DATABASE_URL=postgresql://username:password@localhost:5432/umami</code></li>
-</ul>
-</li>
-</ul>
+<p>To set up Umami, clone the repo and run <code>yarn</code> inside, which looks at the <code>package.json</code> file in the repo and downloads the packages specified there. </p>
 </li>
 <li>
-<p>build</p>
+<p><strong>set up postgres and connection string</strong></p>
 <ul>
-<li><code>yarn build</code><ul>
-<li>note: i needed to configure more swap on my poor server, building eats a lot of memory</li>
+<li>run <code>createdb --username=postgres --host=localhost umami</code></li>
+<li>create a <code>.env</code> file in the cloned umami folder</li>
+<li>put this line in <code>.env</code>, filling in your Postgres's details: <code>DATABASE_URL=postgresql://[USERNAME]:[PASSWORD]@[DB_LOCATION]:[PORT]/[DATABASE_NAME]</code></li>
 </ul>
+<p>Use the <code>createdb</code> command to create a databse called umami. Then, put your connection string into a new <code>.env</code> file so Umami knows how to connect to your Postgres instance and which database to put the metrics in. </p>
+<p>my <a href="#postgresNote1">:example string</a>.</p>
+<p>Note: If you've installed postgres for the first time, you may want to make another user besides the default (postgres), set a password, or change authentication methods.</p>
 </li>
+<li>
+<p><strong>build Umami</strong></p>
+<ul>
+<li><code>yarn build</code></li>
 <li>some optional things:<ul>
 <li><code>yarn next telemetry disable</code> to disable Next.js telemetry</li>
-<li>to change the port next.js uses (default is 3000), go to package.json, change <code>next start</code> to be <code>next start -p [port]</code></li>
+<li>to change the port next.js uses (default is 3000), go to <code>package.json</code>, change <code>next start</code> to be <code>next start -p [new port]</code></li>
 </ul>
 </li>
 </ul>
+<p>Running <code>yarn build</code> looks at the <code>scripts</code> section of <code>package.json</code> and executes the commands found under <code>build</code>.</p>
+<p>Note: Building eats a lot of memory and the base Digital Ocean server may not have enough memory to run it without upgrading or configuring more swap (I learned the hard way!). </p>
+<p><a href="#swap">:More about swap</a></p>
 </li>
 <li>
-<p>start </p>
+<p><strong>start Umami</strong></p>
 <ul>
-<li><code>npm start</code></li>
-<li>optional: use pm2, a process manager, to manage your umami instance<ul>
-<li>the steps below will install pm2 globally, start the umami instance, and save it so you can restart it next time </li>
-<li><code>npm install pm2 -g</code></li>
-<li><code>pm2 start npm --name umami -- start</code> (make sure you're in the umami folder before running)</li>
-<li><code>pm2 save</code></li>
-</ul>
-</li>
-<li>go to http://[IP]:3500/</li>
+<li>run <code>npm start</code></li>
+<li>go to <code>http://[IP]:3000/</code></li>
 <li>log in:<ul>
 <li>username: admin</li>
 <li>password: umami</li>
@@ -169,30 +172,81 @@
 </li>
 <li>go to settings to change your password</li>
 </ul>
+<p>Optional: use <a href="https://pm2.keymetrics.io/docs/usage/quick-start/">PM2</a>, a process manager, to manage your Umami instance. This makes it easier to start and stop Umami when it stops running, like when you restart your server. </p>
+<ul>
+<li><code>npm install pm2 -g</code></li>
+<li><code>pm2 start npm --name umami -- start</code><ul>
+<li>make sure you're in the umami folder before running</li>
+</ul>
+</li>
+<li><code>pm2 save</code></li>
+</ul>
+<p>These steps install PM2 globally, start the Umami instance, and saves it in a list that you can easily restart later.</p>
 </li>
 <li>
-<p>set up site</p>
+<p><strong>set up site</strong></p>
 <ul>
-<li>go to settings &gt; websites</li>
-<li>add website<ul>
-<li>name: can be anything you want (ex: starly)</li>
-<li>domain: your website domain (ex: starly.dev)</li>
+<li>in Umami, go to Settings &gt; Websites</li>
+<li>click Add Website<ul>
+<li>name: can be anything you want (eg: starly)</li>
+<li>domain: your website domain (eg: starly.dev)</li>
 </ul>
 </li>
 <li>click edit &gt; tracking code <ul>
-<li>copy tracking code and put it somewhere in the <code>&lt;head&gt;...&lt;/head&gt;</code> tags of your website</li>
+<li>copy tracking code and put it somewhere in the <code>&lt;head&gt;...&lt;/head&gt;</code> tag of your website</li>
 </ul>
 </li>
 <li>optional:<ul>
-<li>edit &gt; enable share URL if you'd like to share the dashboard with anyone or link it on your website</li>
+<li>edit &gt; enable share URL if you'd like to share the dashboard</li>
 </ul>
 </li>
+<li>test by going to your website and seeing if the visitor count goes up</li>
 </ul>
+<p>If you don't want to track your own visits to your website, you can add <code>umami.disabled</code> with a value of <code>1</code>.</p>
+<p><a href="#disable">:How?</a></p>
 </li>
+</ol>
+<hr>
+<p>There's other things to play around with like reports and insights, but I haven't gotten around to it yet. </p>
+<p>At this point, you're done setting Umami up and have reliable metrics about your website! </p>
+<hr>
+<p>One other thing I did was set up umami.starly.dev as the domain to send Umami requests to (proxying). 
+If your website is hosted on the same server that you're running Umami on, you </p>
+<ol>
 <li></li>
 </ol>
-<p>Next, I started my Umami instance. I had to log in; I suppose that means I made an account somewhere along the way. There goes my reason for not using Google Analytics. </p>
 <h2>How does it work?</h2>
+<p><code>&lt;script defer="" src="https://umami.starly.dev/script.js" data-website-id="really-cool-string"&gt;&lt;/script&gt;</code></p>
+<p>This calls <a href="https://github.com/umami-software/umami/blob/88da20ea7f9e34a3d09cf8503ae09bff63b254bc/src/tracker/index.js"><code>script.js</code></a>, which in turn does some stuff i guess idk </p>
+<p>test
+<kbd> hi </kbd></p>
+<h2>:x note1</h2>
+<p>hi!</p>
+<h2>:x postgresNote1</h2>
+<p><code>DATABASE_URL=postgresql://username:password@localhost:5432/umami</code></p>
+<h2>:x swap</h2>
+<p>Swap is hard drive space used as RAM. Although it is much slower than actual RAM, it can be used when you run out of actual RAM. However, it will slow your system down a lot. </p>
+<p>The following commands let you configure swap on your server, where count is the amount of memory you'd like to use for swapping. </p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>/bin/dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/zero<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/var/swap.1<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1M<span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">1024</span>
+sudo<span class="w"> </span>/sbin/mkswap<span class="w"> </span>/var/swap.1
+sudo<span class="w"> </span>/sbin/swapon<span class="w"> </span>/var/swap.1
+</code></pre></div>
+
+<ul>
+<li>First command makes a file in <code>/var</code> called <code>swap.1</code> with 1024mb filled with 0s (basically just allocating space for the file).</li>
+<li>Second command formats the swap.1 file as a swap area. </li>
+<li>Third command tells the OS you'd like to start using the swap space</li>
+</ul>
+<p>This change will not be permanent unless you add this info to your /etc/fstab file. </p>
+<p>More info <a href="https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04">here</a></p>
+<h2>:x disable</h2>
+<ol>
+<li>go to your website and inspect element</li>
+<li>go to the Application tab </li>
+<li>go to Cookies</li>
+<li>double click the next available space below <code>Name</code> and type <code>umami.disabled</code></li>
+<li>add a value to it of <code>1</code></li>
+</ol>
     </article>
     <section class="post-nav">
         <div id="left-page">

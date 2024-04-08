@@ -235,13 +235,15 @@ a[href*="blue-link"] {
   font-size: 1em;
 }
 
-#container main article p code,
-#container main section p code {
+/* code format background */
+#container main article code,
+#container main section code {
   padding: 0.2em;
   background-color: #f5f5f5;
-  font-size: 0.8em;
+  font-size: 0.85em;
 }
 
+/* keyboard defined format text */
 #container main article p kbd,
 #container main section p kbd {
   display: inline-block;
