@@ -92,12 +92,9 @@ Nutshell.setOptions({
 });
 </script>
 
-<!-- ---
-
-I'll be testing [Nutshell](https://github.com/ncase/nutshell) out! When you see a link like [:this](#note1), click on it to expand it.
-
---- -->
-
+<p>I'll be testing <a href="https://github.com/ncase/nutshell">Nutshell</a> out! When you see a link like <a href="#note1">:this</a>, click on it to expand it.</p>
+<hr>
+<p><img alt="cookie example" src="https://starly.dev/2024/cover.jpg"></p>
 <p><a href="https://umami.is/">Umami</a>. is an open source analytics provider focused on privacy. This means you can see information about people who visit your website, like their country. </p>
 <p>You can find Starly's analytics dashboard <a href="https://umami.starly.dev/share/hNfhWdonj5bA5dBj/starly.dev">here</a> !</p>
 <hr>
@@ -210,11 +207,13 @@ I'll be testing [Nutshell](https://github.com/ncase/nutshell) out! When you see 
 <p>There's other things to play around with like reports and insights, but I haven't gotten around to it yet. </p>
 <p>At this point, you're done setting Umami up and have reliable metrics about your website! </p>
 <hr>
-<p>One other thing I did was set up umami.starly.dev as the domain to send Umami requests to (proxying). 
-If your website is hosted on the same server that you're running Umami on, you </p>
+<p>One other thing I did was set up umami.starly.dev as the domain to send (proxy) Umami requests to. This means that instead of accessing Umami at <code>http://[IP]:3000/</code>, you can go to your chosen subdomain.</p>
+<p>If your website is hosted on the same server that you're running Umami on, you only need to change your Nginx configuration to change the domain. However, because I'm running most of the website on Github Pages, I had to </p>
 <ol>
-<li></li>
+<li>setting up DNS so requests go to your server</li>
+<li>setting up nginx config so requests go to Umami</li>
 </ol>
+<p>This also means you can change your tracking code to <code>https://umami.starly.dev/script.js</code> if you would like. </p>
 <h2>How does it work?</h2>
 <p><code>&lt;script defer="" src="https://umami.starly.dev/script.js" data-website-id="really-cool-string"&gt;&lt;/script&gt;</code></p>
 <p>This calls <a href="https://github.com/umami-software/umami/blob/88da20ea7f9e34a3d09cf8503ae09bff63b254bc/src/tracker/index.js"><code>script.js</code></a>, which in turn does some stuff i guess idk </p>
@@ -224,6 +223,10 @@ If your website is hosted on the same server that you're running Umami on, you <
 <p>hi!</p>
 <h2>:x postgresNote1</h2>
 <p><code>DATABASE_URL=postgresql://username:password@localhost:5432/umami</code></p>
+<ul>
+<li>Postgres's default port is 5432, so use this if you have not configured another port </li>
+<li>Use localhost if your Postgres is on the same server as Umami; otherwise, use the IP of the server Postgres is located on</li>
+</ul>
 <h2>:x swap</h2>
 <p>Swap is hard drive space used as RAM. Although it is much slower than actual RAM, it can be used when you run out of actual RAM. However, it will slow your system down a lot. </p>
 <p>The following commands let you configure swap on your server, where count is the amount of memory you'd like to use for swapping. </p>
@@ -233,11 +236,13 @@ sudo<span class="w"> </span>/sbin/swapon<span class="w"> </span>/var/swap.1
 </code></pre></div>
 
 <ul>
-<li>First command makes a file in <code>/var</code> called <code>swap.1</code> with 1024mb filled with 0s (basically just allocating space for the file).</li>
+<li>First command makes a file in <code>/var</code> named <code>swap.1</code> with 1024mb filled with 0s (basically just allocating space for the file).</li>
 <li>Second command formats the swap.1 file as a swap area. </li>
 <li>Third command tells the OS you'd like to start using the swap space</li>
 </ul>
-<p>This change will not be permanent unless you add this info to your /etc/fstab file. </p>
+<p>This change will not be permanent unless you add this info to your <code>/etc/fstab</code> file, which is where your OS references information about how to open file systems like USBs or where swap is. </p>
+<p>Another parameter that can be configured is swappiness, which controls how often swap is used. It goes from 0-100: 0 means swap will not be used until the system runs out of RAM, and 100 means swap will start being used almost immediately. The default is 60, meaning swap will be used at around 60% of RAM usage. </p>
+<p>This value can be checked with <code>cat /proc/sys/vm/swappiness</code></p>
 <p>More info <a href="https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04">here</a></p>
 <h2>:x disable</h2>
 <ol>
@@ -247,6 +252,7 @@ sudo<span class="w"> </span>/sbin/swapon<span class="w"> </span>/var/swap.1
 <li>double click the next available space below <code>Name</code> and type <code>umami.disabled</code></li>
 <li>add a value to it of <code>1</code></li>
 </ol>
+<p><img alt="cookie example" src="https://starly.dev/2024/cookie.png"></p>
     </article>
     <section class="post-nav">
         <div id="left-page">
