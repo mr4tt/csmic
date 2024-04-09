@@ -131,8 +131,6 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
 
 {
-    const selector = '.zoomable'
-    const zoom = mediumZoom(selector)
 
     // it me
     window.Nutshell = {};
@@ -658,8 +656,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         let cleanHTML = DOMPurify.sanitize(rawHTML,{
             // FORBID_ATTR: ['style','id','class'],
             // FORBID_TAGS: ['style'],
-            // ALLOWED_TAGS: ['script'],
-            ADD_TAGS: ['iframe','audio','video', 'script']
+            ADD_TAGS: ['iframe','audio','video']
         });
 
         // A <span> for further editing the clean HTML.
@@ -1183,6 +1180,18 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             overflow.style.height = section.getBoundingClientRect().height+"px";
             setTimeout(()=>{ overflow.style.height="auto"; }, ANIM_TIME);
 
+            const tags = content.getElementsByTagName('img');
+
+            if (tags.length !== 0) {
+                const selector = '.nutshell-zoom'; // the .zoomable class
+                const zoom = mediumZoom();
+                const arr = Array.from(tags);
+
+                zoom.attach(
+                    arr
+                );
+            }
+
             // Update followup text
             expandable.updateFollowupText();
 
@@ -1248,8 +1257,6 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             Nutshell._updateCloseAllNutshells();
 
         };
-
-        zoom.attach(selector);
 
         // Finally, return this magnificent created Bubble!
         return bubble;

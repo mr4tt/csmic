@@ -89,7 +89,6 @@
 
 <script src="https://starly.dev/2024/nutshelldev.js"></script>
 <script>
-zoom = mediumZoom('.zoomable')
 Nutshell.setOptions({
     dontEmbedHeadings: true, // If 'true', removes the "embed this as a nutshell" option on headings
 });
@@ -333,14 +332,7 @@ sudo<span class="w"> </span>/sbin/swapon<span class="w"> </span>/var/swap.1
 <li>double click the next available space below <code>Name</code> and type <code>umami.disabled</code></li>
 <li>add a value to it of <code>1</code></li>
 </ol>
-<p><img alt="cookie example" id="image-1" src="https://starly.dev/2024/cookie.png"></p>
-<script>
-const selector = '.zoomable' // the .zoomable class
-const zoomTest = mediumZoom(selector)
-
-zoomTest.attach('#image-1')
-</script>
-
+<p><img alt="cookie example" src="https://starly.dev/2024/cookie.png"></p>
 <h2>:x dns</h2>
 <p><img alt="screenshot of DNS settings" src="https://starly.dev/2024/dns.png"></p>
 <p>Note: I have the Github A records because I use Github Pages to host my website</p>
@@ -382,8 +374,7 @@ zoomTest.attach('#image-1')
 </code></pre></div>
 
 <script>  
-const selector = '.zoomable' // the .zoomable class
-const zoom = mediumZoom(selector)
+const zoom = mediumZoom('.zoomable')
 </script>
     </article>
     <section class="post-nav">
