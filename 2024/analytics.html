@@ -85,8 +85,11 @@
                 </li>
             </ul>
         </aside>
-        <script src="https://starly.dev/2024/nutshelldev.js"></script>
+        <script src="https://starly.dev/2024/medium-zoom.js"></script>
+
+<script src="https://starly.dev/2024/nutshelldev.js"></script>
 <script>
+zoom = mediumZoom('.zoomable')
 Nutshell.setOptions({
     dontEmbedHeadings: true, // If 'true', removes the "embed this as a nutshell" option on headings
 });
@@ -94,7 +97,7 @@ Nutshell.setOptions({
 
 <p>I'll be testing <a href="https://github.com/ncase/nutshell">Nutshell</a> out! When you see a link like <a href="#note1">:this</a>, click on it to expand it.</p>
 <hr>
-<p><img alt="cookie example" src="https://starly.dev/2024/cover.jpg"></p>
+<p><img alt="umami screens overlaid" class="zoomable" src="https://starly.dev/2024/cover.jpg"></p>
 <p><a href="https://umami.is/">Umami</a>. is an open source analytics provider focused on privacy. This means you can see information about people who visit your website, like their country. </p>
 <p>You can find Starly's analytics dashboard <a href="https://umami.starly.dev/share/hNfhWdonj5bA5dBj/starly.dev">here</a> !</p>
 <hr>
@@ -113,7 +116,7 @@ Nutshell.setOptions({
 </li>
 </ul>
 <p>actual install docs from umami are <a href="https://umami.is/docs/install">here</a></p>
-<h2>Steps to install and run Umami</h2>
+<h2>Install and run Umami</h2>
 <ol>
 <li>
 <p><strong>set up yarn</strong></p>
@@ -121,7 +124,8 @@ Nutshell.setOptions({
 <li>run <code>corepack enable</code></li>
 </ul>
 <p>We use Yarn (package manager, similar to npm) to install necessary packages. This is activated with corepack, which comes with our Node.js installation. </p>
-<p>For more info, yarn installation docs are <a class="blue-link" href="https://yarnpkg.com/getting-started/install">here</a></p>
+<p>You can use npm instead, but I haven't tried it. </p>
+<p>For more info, yarn installation docs are <a href="https://yarnpkg.com/getting-started/install">here</a></p>
 </li>
 <li>
 <p><strong>set up umami</strong></p>
@@ -191,6 +195,7 @@ Nutshell.setOptions({
 </li>
 <li>click edit &gt; tracking code <ul>
 <li>copy tracking code and put it somewhere in the <code>&lt;head&gt;...&lt;/head&gt;</code> tag of your website</li>
+<li><a href="#screenshot">:screenshot</a></li>
 </ul>
 </li>
 <li>optional:<ul>
@@ -206,15 +211,88 @@ Nutshell.setOptions({
 <hr>
 <p>There's other things to play around with like reports and insights, but I haven't gotten around to it yet. </p>
 <p>At this point, you're done setting Umami up and have reliable metrics about your website! </p>
-<hr>
-<p>One other thing I did was set up umami.starly.dev as the domain to send (proxy) Umami requests to. This means that instead of accessing Umami at <code>http://[IP]:3000/</code>, you can go to your chosen subdomain.</p>
-<p>If your website is hosted on the same server that you're running Umami on, you only need to change your Nginx configuration to change the domain. However, because I'm running most of the website on Github Pages, I had to </p>
+<h2>There's <em>more</em>??</h2>
+<p>One other thing I did was set up umami.starly.dev as the domain to send (proxy) Umami requests to. This means that you can access Umami at your chosen domain instead of <code>http://[IP]:3000/</code>.</p>
+<p>If your website is hosted on the same server that you're running Umami on, you only need to add an Nginx configuration to change the domain. However, because I'm running most of the website on Github Pages, I also had to change my DNS settings to tell the internet where umami.starly.dev is. </p>
+<p>If you want to use https, you will have to set up SSL certs on your server. </p>
+<h2>Proxy Umami Requests</h2>
 <ol>
-<li>setting up DNS so requests go to your server</li>
-<li>setting up nginx config so requests go to Umami</li>
+<li>
+<p><strong>set up DNS so requests go to your server</strong> <br> (only needed if Umami and your website are hosted in different places!!!!!)</p>
+<ul>
+<li>add a new A record to your DNS <ul>
+<li>name: the subdomain you want to use<ul>
+<li>eg: use umami if you want to point to umami.starly.dev</li>
+</ul>
+</li>
+<li>address: your server's IP address</li>
+</ul>
+</li>
+<li><a href="#dns">:What should my DNS look like?</a></li>
+</ul>
+</li>
+<li>
+<p><strong>set up nginx config so requests go to Umami</strong></p>
+<ul>
+<li>run <code>systemctl status nginx</code> to check if nginx is running<ul>
+<li>if not, try <code>sudo systemctl start nginx</code></li>
+</ul>
+</li>
+<li>go to <code>/etc/nginx/nginx.conf</code> and remove any <code>location /</code> blocks currently inside</li>
+<li>
+<p>paste the following inside the <code>http { }</code> block</p>
+<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">umami.yourdomain.com</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://localhost:3000</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+</li>
+<li>
+<p>example of <a href="#nginx">:<code>nginx.conf</code></a></p>
+</li>
+<li>run <code>sudo nginx -s reload</code> to reload config changes</li>
+<li>go to <code>umami.yourdomain.com</code> and check if it pulls up the Umami website</li>
+</ul>
+<p>The config does x and y </p>
+<ul>
+<li>If you can't access it, here are some troubleshooting steps:<ul>
+<li>run <code>sudo nginx -t</code> to check for syntax errors (should say OK)</li>
+<li>check <code>/var/log/nginx/error.log</code> to look at logged errors</li>
+<li>ensure nginx is running</li>
+<li>run <code>sudo ufw status</code> to check if your firewall is on or not allowing connections in </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>set up SSL certs</strong></p>
+<ul>
+<li>i dont remember lol</li>
+</ul>
+</li>
 </ol>
-<p>This also means you can change your tracking code to <code>https://umami.starly.dev/script.js</code> if you would like. </p>
-<h2>How does it work?</h2>
+<p>u can now change your tracking code </p>
+<h2>Updating</h2>
+<p>It's simple to update your Umami instance when a new version comes out! </p>
+<ul>
+<li><code>cd umami</code></li>
+<li><code>git pull</code></li>
+<li><code>yarn</code></li>
+<li><code>yarn build</code></li>
+<li><code>npm start</code> or <code>pm2 reload umami</code> for PM2</li>
+</ul>
+<p>These steps fetch the update from Github, install any new dependencies from the update, rebuild Umami, and restart it. </p>
+<h2>How does Umami work?</h2>
 <p><code>&lt;script defer="" src="https://umami.starly.dev/script.js" data-website-id="really-cool-string"&gt;&lt;/script&gt;</code></p>
 <p>This calls <a href="https://github.com/umami-software/umami/blob/88da20ea7f9e34a3d09cf8503ae09bff63b254bc/src/tracker/index.js"><code>script.js</code></a>, which in turn does some stuff i guess idk </p>
 <p>test
@@ -244,6 +322,9 @@ sudo<span class="w"> </span>/sbin/swapon<span class="w"> </span>/var/swap.1
 <p>Another parameter that can be configured is swappiness, which controls how often swap is used. It goes from 0-100: 0 means swap will not be used until the system runs out of RAM, and 100 means swap will start being used almost immediately. The default is 60, meaning swap will be used at around 60% of RAM usage. </p>
 <p>This value can be checked with <code>cat /proc/sys/vm/swappiness</code></p>
 <p>More info <a href="https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04">here</a></p>
+<p>Windows has a similar concept called page / pagefile; <a href="https://stackoverflow.com/a/1689119">here</a> is a good summary of both.</p>
+<h2>:x screenshot</h2>
+<p><img alt="screenshot of where to find tracking code" src="https://starly.dev/2024/script.png"></p>
 <h2>:x disable</h2>
 <ol>
 <li>go to your website and inspect element</li>
@@ -252,7 +333,58 @@ sudo<span class="w"> </span>/sbin/swapon<span class="w"> </span>/var/swap.1
 <li>double click the next available space below <code>Name</code> and type <code>umami.disabled</code></li>
 <li>add a value to it of <code>1</code></li>
 </ol>
-<p><img alt="cookie example" src="https://starly.dev/2024/cookie.png"></p>
+<p><img alt="cookie example" id="image-1" src="https://starly.dev/2024/cookie.png"></p>
+<script>
+const selector = '.zoomable' // the .zoomable class
+const zoomTest = mediumZoom(selector)
+
+zoomTest.attach('#image-1')
+</script>
+
+<h2>:x dns</h2>
+<p><img alt="screenshot of DNS settings" src="https://starly.dev/2024/dns.png"></p>
+<p>Note: I have the Github A records because I use Github Pages to host my website</p>
+<h2>:x nginx</h2>
+<div class="highlight"><pre><span></span><code><span class="k">user</span><span class="w"> </span><span class="s">www-data</span><span class="p">;</span>
+<span class="k">worker_processes</span><span class="w"> </span><span class="s">auto</span><span class="p">;</span>
+<span class="k">pid</span><span class="w"> </span><span class="s">/run/nginx.pid</span><span class="p">;</span>
+<span class="k">error_log</span><span class="w"> </span><span class="s">/var/log/nginx/error.log</span><span class="p">;</span>
+
+<span class="k">events</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">worker_connections</span><span class="w"> </span><span class="mi">768</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">sendfile</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">tcp_nopush</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">types_hash_max_size</span><span class="w"> </span><span class="mi">2048</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/mime.types</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">default_type</span><span class="w"> </span><span class="s">application/octet-stream</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">ssl_prefer_server_ciphers</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">access_log</span><span class="w"> </span><span class="s">/var/log/nginx/access.log</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">gzip</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+
+<span class="w">            </span><span class="kn">server_name</span><span class="w"> </span><span class="s">umami.starly.dev</span><span class="p">;</span>
+
+<span class="w">            </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://localhost:3500/</span><span class="p">;</span>
+<span class="w">                </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="w">                </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">                </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<script>  
+const selector = '.zoomable' // the .zoomable class
+const zoom = mediumZoom(selector)
+</script>
     </article>
     <section class="post-nav">
         <div id="left-page">
