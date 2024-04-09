@@ -654,8 +654,8 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
         // DOMPurify: no styles, no scripts, iframes allowed (but sandboxed later)
         let cleanHTML = DOMPurify.sanitize(rawHTML,{
-            FORBID_ATTR: ['style','id','class'],
-            FORBID_TAGS: ['style'],
+            // FORBID_ATTR: ['style','id','class'],
+            // FORBID_TAGS: ['style'],
             ADD_TAGS: ['iframe','audio','video']
         });
 
@@ -1179,6 +1179,18 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             // And animate expand for new content! Go to full height, then auto.
             overflow.style.height = section.getBoundingClientRect().height+"px";
             setTimeout(()=>{ overflow.style.height="auto"; }, ANIM_TIME);
+
+            const tags = content.getElementsByTagName('img');
+
+            if (tags.length !== 0) {
+                const selector = '.nutshell-zoom'; // the .zoomable class
+                const zoom = mediumZoom();
+                const arr = Array.from(tags);
+
+                zoom.attach(
+                    arr
+                );
+            }
 
             // Update followup text
             expandable.updateFollowupText();
