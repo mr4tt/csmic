@@ -654,9 +654,9 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
         // DOMPurify: no styles, no scripts, iframes allowed (but sandboxed later)
         let cleanHTML = DOMPurify.sanitize(rawHTML,{
-            // FORBID_ATTR: ['style','id','class'],
-            // FORBID_TAGS: ['style'],
-            ADD_TAGS: ['iframe','audio','video']
+            FORBID_ATTR: ['style','id'],
+            FORBID_TAGS: ['style'],
+            ADD_TAGS: ['iframe','audio','video','class']
         });
 
         // A <span> for further editing the clean HTML.
@@ -1526,6 +1526,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
 
     #container .nutshell-expandable{
         /* i think this selector changes attributes around the text? */
+        /* blue color for text */
         /* Boring style to fit parent */
         color: #58A4B0;
         text-decoration: underline dotted #58A4B0;
