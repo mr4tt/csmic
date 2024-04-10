@@ -230,6 +230,7 @@ a[href*="blue-link"] {
   box-shadow: 0 -1px 0 #bbbbbb inset;
 }
 
+/* code block format */
 #container main article pre code,
 #container main section pre code {
   font-size: 1em;

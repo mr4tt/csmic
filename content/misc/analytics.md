@@ -20,8 +20,6 @@ I'll be testing [Nutshell](https://github.com/ncase/nutshell) out! When you see 
 
 ---
 
-
-
 ![umami screens overlaid]({attach}/images/umami/cover.jpg){: .zoomable}
 
 
@@ -31,7 +29,7 @@ You can find Starly's analytics dashboard [here](https://umami.starly.dev/share/
 
 ---
 
-Google Analytics does similar things, but I didn't need a lot of their advanced features (who would have thought my tiny blog wouldn't need ad revenue tracking). And lack of privacy and GDPR non-compliant or something. 
+Google Analytics has more metrics, but I didn't need a lot of their advanced features (who would have thought my tiny blog wouldn't need ad revenue tracking). And lack of privacy and GDPR non-compliant or something. 
 
 There's other Google Analytics alternatives, but they cost money, so I didn't read much of their websites. 
 
@@ -72,7 +70,7 @@ actual install docs from umami are [here](https://umami.is/docs/install){: targe
     - create a `.env` file in the cloned umami folder
     - put this line in `.env`, filling in your Postgres's details: `DATABASE_URL=postgresql://[USERNAME]:[PASSWORD]@[DB_LOCATION]:[PORT]/[DATABASE_NAME]`
     
-    Use the `createdb` command to create a databse called umami. Then, put your connection string into a new `.env` file so Umami knows how to connect to your Postgres instance and which database to put the metrics in. 
+    Use the `createdb` command to create a database called umami. Then, put your connection string into a new `.env` file so Umami knows how to connect to your Postgres instance and which database to put the metrics in. 
 
     my [:example string](#postgresNote1).
     
@@ -92,11 +90,12 @@ actual install docs from umami are [here](https://umami.is/docs/install){: targe
 
 5. **start Umami**
     - run `npm start`
-    - go to `http://[IP]:3000/`
-    - log in:
+    - go to `http://[IP]:3000/`, where `[IP]` is the IP address of your server
+    - log in
         - username: admin
         - password: umami
-    - go to settings to change your password
+        - log in [:screenshot](#login)
+    - go to Settings -> Users to change your password
 
     Optional: use [PM2](https://pm2.keymetrics.io/docs/usage/quick-start/){: target="_blank"}, a process manager, to manage your Umami instance. This makes it easier to start and stop Umami when it stops running, like when you restart your server. 
 
@@ -110,11 +109,12 @@ actual install docs from umami are [here](https://umami.is/docs/install){: targe
 6. **set up site**
     - in Umami, go to Settings > Websites
     - click Add Website
-        - name: can be anything you want (eg: starly)
-        - domain: your website domain (eg: starly.dev)
+        - name: can be anything you want (e.g. starly)
+        - domain: your website domain (e.g. starly.dev)
+        - add website [:screenshot](#add_site)
     - click edit > tracking code 
         - copy tracking code and put it somewhere in the `<head>...</head>` tag of your website
-        - [:screenshot](#screenshot)
+        - tracking code [:screenshot](#screenshot)
     - optional:
         - edit > enable share URL if you'd like to share the dashboard
     - test by going to your website and seeing if the visitor count goes up
@@ -142,7 +142,7 @@ If you want to use https, you will have to set up SSL certs on your server.
 1. **set up DNS so requests go to your server** <br> (only needed if Umami and your website are hosted in different places!!!!!)
     - add a new A record to your DNS 
         - name: the subdomain you want to use
-            - eg: use umami if you want to point to umami.starly.dev
+            - e.g. use umami if you want to point to umami.starly.dev
         - address: your server's IP address
     - [:What should my DNS look like?](#dns)
 
@@ -171,19 +171,60 @@ If you want to use https, you will have to set up SSL certs on your server.
     - run `sudo nginx -s reload` to reload config changes
     - go to `umami.yourdomain.com` and check if it pulls up the Umami website
 
-    The config does x and y 
+     The config tells nginx to listen on port 80 (which is where internet traffic goes through). Now, when someone goes to `http://umami.yourdomain.com`, nginx hears it and knows to return whatever is at `localhost:3000` to that person.
 
-    - If you can't access it, here are some troubleshooting steps:
-        - run `sudo nginx -t` to check for syntax errors (should say OK)
-        - check `/var/log/nginx/error.log` to look at logged errors
-        - ensure nginx is running
-        - run `sudo ufw status` to check if your firewall is on or not allowing connections in 
+    If you can't access it, here are some [:troubleshooting steps](#troubleshoot)
 
             
-3. **set up SSL certs**
-    - i dont remember lol
+3. **set up SSL certs** <br> (only needed if you want https support!!!!!!)
 
-u can now change your tracking code 
+    [:What's http/https? Why would I need an SSL cert?](#https)
+
+    There are two different ways to get an SSL certificate: 
+
+    - Let's Encrypt
+    - Cloudflare
+        - If you're already using Cloudflare to manage DNS, it's easier to use Cloudflare
+
+    I have not used Let's Encrypt, so this guide only covers Cloudflare. Here are Let's Encrypt's directions:
+
+    - [Getting Started](https://letsencrypt.org/getting-started/){: .blue-link target="_blank"}
+    - [Instructions](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal){: .blue-link target="_blank"} for nginx and Ubuntu
+
+    Steps for using Cloudflare certs:
+
+    1. **generate TLS cert**
+        - login to Cloudflare, go to the TLS/SSL section (found on the left), then Origin Server
+        - click Create Certificate and don't change the options 
+        - click Create to see your new certificate's information
+            - Note: **do not** leave the information page without copying your private key
+        - copy the Origin Certificate into `/etc/ssl/cert.pem` on your server
+        - copy your private key into `/etc/ssl/key.pem` on your server 
+            - Note: make sure your certs don't have spaces or newlines
+
+    2. **update nginx config**
+        - paste the following under your previous server block listening on port 80
+
+                :::nginx
+                server {
+                    listen 443 ssl http2;
+                    listen [::]:443 ssl http2;
+                    ssl_certificate         /etc/ssl/cert.pem;
+                    ssl_certificate_key     /etc/ssl/key.pem;
+
+                    server_name umami.starly.dev;
+
+                    location / {
+                        proxy_pass http://localhost:3000/;
+                        proxy_set_header X-Real-IP $remote_addr;
+                        proxy_set_header Host $host;
+                        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                    }
+                }
+
+        - Now, you should be able to access Umami from `https://umami.starly.dev`. 
+
+    You can also change your tracking code to use `umami.yourdomain.com` (you can copy the code again from Umami)
 
 ## Updating
 
@@ -199,12 +240,24 @@ These steps fetch the update from Github, install any new dependencies from the 
 
 ## How does Umami work?
 
-`<script defer="" src="https://umami.starly.dev/script.js" data-website-id="really-cool-string"></script>`
+How does Umami get data from visitors and put it into your dashboard? 
 
-This calls [`script.js`](https://github.com/umami-software/umami/blob/88da20ea7f9e34a3d09cf8503ae09bff63b254bc/src/tracker/index.js){: target="_blank"}, which in turn does some stuff i guess idk 
+When you put your Umami tracking code into the `<head>` tag of your website, the [`script.js`](https://github.com/umami-software/umami/blob/88da20ea7f9e34a3d09cf8503ae09bff63b254bc/src/tracker/index.js){: target="_blank"} file on your server gets called. The script gets information from http headers like which website page you're looking at and listens for any events that you've set up with Umami (such as button clicks). 
 
-test
-<kbd> hi </kbd>
+Next, this information is sent to your database, and when you look at the dashboard, it pulls that information for you. 
+
+If you're using nginx, you may have noticed the following lines:
+
+    :::nginx
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+These headers are forwarded from the original request to Umami, so even if you're proxying the connection, Umami can still get the data it needs for analytics. 
+
+## Summary
+
+Overall, Umami is a great tool to get analytics about your website. Just install Umami from the Github repository onto your server and put your tracking code onto your website. If desired, you can set up a subdomain for Umami using Nginx. 
 
 ## :x note1
 hi!
@@ -241,6 +294,12 @@ More info [here](https://www.digitalocean.com/community/tutorials/how-to-add-swa
 
 Windows has a similar concept called page / pagefile; [here](https://stackoverflow.com/a/1689119) is a good summary of both.
 
+## :x login 
+![screenshot of umami's login page]({attach}/images/umami/login.png)
+
+## :X add_site
+![screenshot of adding a website in umami]({attach}/images/umami/add_site.png)
+
 ## :x screenshot
 
 ![screenshot of where to find tracking code]({attach}/images/umami/script.png)
@@ -257,7 +316,6 @@ Windows has a similar concept called page / pagefile; [here](https://stackoverfl
 
 
 ## :x dns
-
 ![screenshot of DNS settings]({attach}/images/umami/dns.png)
 
 Note: I have the Github A records because I use Github Pages to host my website
@@ -299,6 +357,19 @@ Note: I have the Github A records because I use Github Pages to host my website
                 }
             }
     }
+
+## :x troubleshoot
+- run `sudo nginx -t` to check for syntax errors (should say OK)
+- check `/var/log/nginx/error.log` to look at logged errors
+- run `systemctl status nginx` to ensure nginx is running
+- run `sudo ufw status` to check if your firewall is allowing connections in/out
+
+## :x https
+http is a way for computers to fetch the website data you've requested. https is the same protocol, but there's an extra layer of security on top. 
+
+When you go to a website with https, your browser checks the website's SSL certificate. Your browser does a TLS handshake, which is an exchange of encryption keys between you and the website's server made possible by the SSL certificate's information. 
+
+Now, your browser can encrypt your data using these keys so that only you and the website can read your data. The certificate also ensures the website you're going to is who they claim to be.
 
 <script>  
 const zoom = mediumZoom('.zoomable')

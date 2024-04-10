@@ -6,7 +6,7 @@ Slug: intern-lessons
 Summary: Some lessons from my previous internships
 
 
-<script src="{attach}nutshelldev.js"></script>
+<script src="{attach}/scripts/nutshelldev.js"></script>
 <script>
 Nutshell.setOptions({
     dontEmbedHeadings: true, // If 'true', removes the "embed this as a nutshell" option on headings

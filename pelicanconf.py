@@ -50,6 +50,8 @@ EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},
                        'extra/favicon.ico': {'path': 'favicon.ico'}, 
                        'extra/resume_it.pdf': {'path': 'resume.pdf'}, }
 
+# IGNORE_FILES = ['.test*']
+
 # MENUITEMS = [
 #     ('Google', 'http://www.google.com')
 # ]
