@@ -6,9 +6,9 @@ Slug: analytics
 Summary: How I set up website analytics tracking with Umami
 status: hidden
 
-<script src="{attach}medium-zoom.js"></script>
+<script src="{attach}/scripts/medium-zoom.js"></script>
 
-<script src="{attach}nutshelldev.js"></script>
+<script src="{attach}/scripts/nutshelldev.js"></script>
 <script>
 Nutshell.setOptions({
     dontEmbedHeadings: true, // If 'true', removes the "embed this as a nutshell" option on headings
@@ -41,12 +41,12 @@ If you're just here to figure out installing Umami without any extra bits, you'l
 
 ## Software Requirements
 - i am using Ubuntu 23.10 on a Digital Ocean instance
-- install Node.js, [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04){: .blue-link}
-- install Nginx, [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04){: .blue-link}
-- install PostgreSQL, [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-22-04){: .blue-link}
+- install Node.js, [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04){: .blue-link target="_blank"}
+- install Nginx, [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04){: .blue-link target="_blank"}
+- install PostgreSQL, [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-22-04){: .blue-link target="_blank"}
     - you can also use MySQL with Umami, but this post uses postgres
 
-actual install docs from umami are [here](https://umami.is/docs/install)
+actual install docs from umami are [here](https://umami.is/docs/install){: target="_blank"}
 
 ## Install and run Umami
 
@@ -58,7 +58,7 @@ actual install docs from umami are [here](https://umami.is/docs/install)
     
     You can use npm instead, but I haven't tried it. 
     
-    For more info, yarn installation docs are [here](https://yarnpkg.com/getting-started/install)
+    For more info, yarn installation docs are [here](https://yarnpkg.com/getting-started/install){: target="_blank"}
 
 2. **set up umami**
     - `git clone https://github.com/umami-software/umami.git`
@@ -98,7 +98,7 @@ actual install docs from umami are [here](https://umami.is/docs/install)
         - password: umami
     - go to settings to change your password
 
-    Optional: use [PM2](https://pm2.keymetrics.io/docs/usage/quick-start/), a process manager, to manage your Umami instance. This makes it easier to start and stop Umami when it stops running, like when you restart your server. 
+    Optional: use [PM2](https://pm2.keymetrics.io/docs/usage/quick-start/){: target="_blank"}, a process manager, to manage your Umami instance. This makes it easier to start and stop Umami when it stops running, like when you restart your server. 
 
     - `npm install pm2 -g`
     - `pm2 start npm --name umami -- start`
@@ -179,7 +179,6 @@ If you want to use https, you will have to set up SSL certs on your server.
         - ensure nginx is running
         - run `sudo ufw status` to check if your firewall is on or not allowing connections in 
 
-
             
 3. **set up SSL certs**
     - i dont remember lol
@@ -202,7 +201,7 @@ These steps fetch the update from Github, install any new dependencies from the 
 
 `<script defer="" src="https://umami.starly.dev/script.js" data-website-id="really-cool-string"></script>`
 
-This calls [`script.js`](https://github.com/umami-software/umami/blob/88da20ea7f9e34a3d09cf8503ae09bff63b254bc/src/tracker/index.js), which in turn does some stuff i guess idk 
+This calls [`script.js`](https://github.com/umami-software/umami/blob/88da20ea7f9e34a3d09cf8503ae09bff63b254bc/src/tracker/index.js){: target="_blank"}, which in turn does some stuff i guess idk 
 
 test
 <kbd> hi </kbd>
