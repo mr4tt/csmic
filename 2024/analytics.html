@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+        <script defer src="https://umami.starly.dev/script.js" data-website-id="1c0e4704-fd15-4764-8b0a-bb7c925ea6d1"></script>  
    
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,22 +70,24 @@
     <article>
         <h1>My Adventure in Building Umami</h1>
         
-        <aside>
-            <ul>
-                <li>
-                    <time datetime="2024-04-05 19:37:00-07:00">Apr 05, 2024</time>
-                </li>
-                <!--  -->
-                <li>
-                    Categories:
-                    <a href="https://starly.dev/category/misc.html"><em>Misc</em></a>
-                </li>
-                <li>
-                    Tags:
-                    <a href="https://starly.dev/tag/misc.html"><em>#misc</em></a>
-                </li>
-            </ul>
-        </aside>
+    </article>
+    <aside>
+        <ul>
+            <li>
+                <time datetime="2024-04-05 19:37:00-07:00">Apr 05, 2024</time>
+            </li>
+            <!--  -->
+            <li>
+                Categories:
+                <a href="https://starly.dev/category/misc.html"><em>Misc</em></a>
+            </li>
+            <li>
+                Tags:
+                <a href="https://starly.dev/tag/misc.html"><em>#misc</em></a>
+            </li>
+        </ul>
+    </aside>
+    <article>
         <script src="https://starly.dev/2024/medium-zoom.js"></script>
 
 <script src="https://starly.dev/2024/nutshelldev.js"></script>
@@ -94,11 +97,11 @@ Nutshell.setOptions({
 });
 </script>
 
-<p>I'll be testing <a href="https://github.com/ncase/nutshell">Nutshell</a> out! When you see a link like <a href="#note1">:this</a>, click on it to expand it.</p>
+<p>I'll be testing <a href="https://github.com/ncase/nutshell" target="_blank">Nutshell</a> out! When you see a link like <a href="#note1">:this</a>, click on it to expand it.</p>
 <hr>
 <p><img alt="umami screens overlaid" class="zoomable" src="https://starly.dev/2024/cover.jpg"></p>
-<p><a href="https://umami.is/">Umami</a>. is an open source analytics provider focused on privacy. This means you can see information about people who visit your website, like their country. </p>
-<p>You can find Starly's analytics dashboard <a href="https://umami.starly.dev/share/hNfhWdonj5bA5dBj/starly.dev">here</a> !</p>
+<p><a href="https://umami.is/" target="_blank">Umami</a>. is an open source analytics provider focused on privacy. This means you can see information about people who visit your website, like their country. </p>
+<p>You can find Starly's analytics dashboard <a href="https://umami.starly.dev/share/hNfhWdonj5bA5dBj/starly.dev" target="_blank">here</a> !</p>
 <hr>
 <p>Google Analytics has more metrics, but I didn't need a lot of their advanced features (who would have thought my tiny blog wouldn't need ad revenue tracking). And lack of privacy and GDPR non-compliant or something. </p>
 <p>There's other Google Analytics alternatives, but they cost money, so I didn't read much of their websites. </p>
@@ -107,9 +110,8 @@ Nutshell.setOptions({
 <h2>Software Requirements</h2>
 <ul>
 <li>i am using Ubuntu 23.10 on a Digital Ocean instance</li>
-<li>install Node.js, <a class="blue-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04" target="_blank">tutorial</a></li>
-<li>install Nginx, <a class="blue-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04" target="_blank">tutorial</a></li>
-<li>install PostgreSQL, <a class="blue-link" href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-22-04" target="_blank">tutorial</a><ul>
+<li>install Node.js, <a href="https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04" target="_blank">tutorial</a></li>
+<li>install PostgreSQL, <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-22-04" target="_blank">tutorial</a><ul>
 <li>you can also use MySQL with Umami, but this post uses postgres</li>
 </ul>
 </li>
@@ -140,7 +142,10 @@ Nutshell.setOptions({
 <ul>
 <li>run <code>createdb --username=postgres --host=localhost umami</code></li>
 <li>create a <code>.env</code> file in the cloned umami folder</li>
-<li>put this line in <code>.env</code>, filling in your Postgres's details: <code>DATABASE_URL=postgresql://[USERNAME]:[PASSWORD]@[DB_LOCATION]:[PORT]/[DATABASE_NAME]</code></li>
+<li>put this line in <code>.env</code>, filling in your Postgres's details: <code>DATABASE_URL=postgresql://[USERNAME]:[PASSWORD]@[DB_LOCATION]:[PORT]/[DATABASE_NAME]</code><ul>
+<li>if this string is incorrect, it will show this <a href="#error">:error</a></li>
+</ul>
+</li>
 </ul>
 <p>Use the <code>createdb</code> command to create a database called umami. Then, put your connection string into a new <code>.env</code> file so Umami knows how to connect to your Postgres instance and which database to put the metrics in. </p>
 <p>my <a href="#postgresNote1">:example string</a>.</p>
@@ -182,7 +187,7 @@ Nutshell.setOptions({
 </li>
 <li><code>pm2 save</code></li>
 </ul>
-<p>These steps install PM2 globally, start the Umami instance, and saves it in a list that you can easily restart later.</p>
+<p>These steps install PM2 globally, start the Umami instance with PM2, and saves the process in a list that you can easily restart later (with <code>pm2 start all</code> and <code>pm2 stop all</code>)</p>
 </li>
 <li>
 <p><strong>set up site</strong></p>
@@ -195,7 +200,7 @@ Nutshell.setOptions({
 </ul>
 </li>
 <li>click edit &gt; tracking code <ul>
-<li>copy tracking code and put it somewhere in the <code>&lt;head&gt;...&lt;/head&gt;</code> tag of your website</li>
+<li>copy tracking code and put it in the <code>&lt;head&gt;...&lt;/head&gt;</code> tag of each website page you want to track</li>
 <li>tracking code <a href="#screenshot">:screenshot</a></li>
 </ul>
 </li>
@@ -213,9 +218,10 @@ Nutshell.setOptions({
 <p>There's other things to play around with like reports and insights, but I haven't gotten around to it yet. </p>
 <p>At this point, you're done setting Umami up and have reliable metrics about your website! </p>
 <h2>There's <em>more</em>??</h2>
-<p>One other thing I did was set up umami.starly.dev as the domain to send (proxy) Umami requests to. This means that you can access Umami at your chosen domain instead of <code>http://[IP]:3000/</code>.</p>
-<p>If your website is hosted on the same server that you're running Umami on, you only need to add an Nginx configuration to change the domain. However, because I'm running most of the website on Github Pages, I also had to change my DNS settings to tell the internet where umami.starly.dev is. </p>
+<p>One other thing I did was set up <code>umami.starly.dev</code> as the domain to send (proxy) Umami requests to using Nginx. This means that you can access Umami at your chosen domain instead of <code>http://[IP]:3000/</code>.</p>
+<p>If your website is hosted on the same server that you're running Umami on, you only need to add an Nginx configuration to change the domain. However, because I'm running most of the website on Github Pages, I also had to change my DNS settings to tell the internet where <code>umami.starly.dev</code> is. </p>
 <p>If you want to use https, you will have to set up SSL certs on your server. </p>
+<p>Nginx install <a href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04" target="_blank">tutorial</a>.</p>
 <h2>Proxy Umami Requests</h2>
 <ol>
 <li>
@@ -223,7 +229,7 @@ Nutshell.setOptions({
 <ul>
 <li>add a new A record to your DNS <ul>
 <li>name: the subdomain you want to use<ul>
-<li>e.g. use umami if you want to point to umami.starly.dev</li>
+<li>e.g. use umami if you want to point to <code>umami.starly.dev</code></li>
 </ul>
 </li>
 <li>address: your server's IP address</li>
@@ -280,8 +286,8 @@ Nutshell.setOptions({
 </ul>
 <p>I have not used Let's Encrypt, so this guide only covers Cloudflare. Here are Let's Encrypt's directions:</p>
 <ul>
-<li><a class="blue-link" href="https://letsencrypt.org/getting-started/" target="_blank">Getting Started</a></li>
-<li><a class="blue-link" href="https://certbot.eff.org/instructions?ws=nginx&amp;os=ubuntufocal" target="_blank">Instructions</a> for nginx and Ubuntu</li>
+<li><a href="https://letsencrypt.org/getting-started/" target="_blank">Getting Started</a></li>
+<li><a href="https://certbot.eff.org/instructions?ws=nginx&amp;os=ubuntufocal" target="_blank">Instructions</a> for nginx and Ubuntu</li>
 </ul>
 <p>Steps for using Cloudflare certs:</p>
 <ol>
@@ -325,8 +331,9 @@ Nutshell.setOptions({
 
 </li>
 <li>
-<p>Now, you should be able to access Umami from <code>https://umami.starly.dev</code>. </p>
+<p>example of <a href="#nginx2">:nginx.conf</a></p>
 </li>
+<li>Now, you should be able to access Umami from <code>https://umami.starly.dev</code>. </li>
 </ul>
 </li>
 </ol>
@@ -364,6 +371,12 @@ Nutshell.setOptions({
 <li>Postgres's default port is 5432, so use this if you have not configured another port </li>
 <li>Use localhost if your Postgres is on the same server as Umami; otherwise, use the IP of the server Postgres is located on</li>
 </ul>
+<h2>:x error</h2>
+<div class="highlight"><pre><span></span><code>✓ DATABASE_URL is defined.
+✗ Unable to connect to the database.
+error Command failed with exit code 1.
+</code></pre></div>
+
 <h2>:x swap</h2>
 <p>Swap is hard drive space used as RAM. Although it is much slower than actual RAM, it can be used when you run out of actual RAM. However, it will slow your system down a lot. </p>
 <p>The following commands let you configure swap on your server, where count is the amount of memory you'd like to use for swapping. </p>
@@ -448,6 +461,59 @@ sudo<span class="w"> </span>/sbin/swapon<span class="w"> </span>/var/swap.1
 <p>http is a way for computers to fetch the website data you've requested. https is the same protocol, but there's an extra layer of security on top. </p>
 <p>When you go to a website with https, your browser checks the website's SSL certificate. Your browser does a TLS handshake, which is an exchange of encryption keys between you and the website's server made possible by the SSL certificate's information. </p>
 <p>Now, your browser can encrypt your data using these keys so that only you and the website can read your data. The certificate also ensures the website you're going to is who they claim to be.</p>
+<h2>:x nginx2</h2>
+<div class="highlight"><pre><span></span><code><span class="k">user</span><span class="w"> </span><span class="s">www-data</span><span class="p">;</span>
+<span class="k">worker_processes</span><span class="w"> </span><span class="s">auto</span><span class="p">;</span>
+<span class="k">pid</span><span class="w"> </span><span class="s">/run/nginx.pid</span><span class="p">;</span>
+<span class="k">error_log</span><span class="w"> </span><span class="s">/var/log/nginx/error.log</span><span class="p">;</span>
+
+<span class="k">events</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">worker_connections</span><span class="w"> </span><span class="mi">768</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">sendfile</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">tcp_nopush</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">types_hash_max_size</span><span class="w"> </span><span class="mi">2048</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">include</span><span class="w"> </span><span class="s">/etc/nginx/mime.types</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">default_type</span><span class="w"> </span><span class="s">application/octet-stream</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">ssl_prefer_server_ciphers</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">access_log</span><span class="w"> </span><span class="s">/var/log/nginx/access.log</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">gzip</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="p">;</span>
+
+<span class="w">            </span><span class="kn">server_name</span><span class="w"> </span><span class="s">umami.starly.dev</span><span class="p">;</span>
+
+<span class="w">            </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://localhost:3500/</span><span class="p">;</span>
+<span class="w">                </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="w">                </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">                </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">listen</span><span class="w"> </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="w"> </span><span class="s">http2</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:443</span><span class="w"> </span><span class="s">ssl</span><span class="w"> </span><span class="s">http2</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">ssl_certificate</span><span class="w">         </span><span class="s">/etc/ssl/cert.pem</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">ssl_certificate_key</span><span class="w">     </span><span class="s">/etc/ssl/key.pem</span><span class="p">;</span>
+
+<span class="w">            </span><span class="kn">server_name</span><span class="w"> </span><span class="s">umami.starly.dev</span><span class="p">;</span>
+
+<span class="w">            </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://localhost:3000/</span><span class="p">;</span>
+<span class="w">                </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="w">                </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">                </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <script>  
 const zoom = mediumZoom('.zoomable')
 </script>
@@ -459,6 +525,8 @@ const zoom = mediumZoom('.zoomable')
         </div>
         <div id="right-page">
             <div id="right-link">
+                <a href="https://starly.dev/2024/intern-lessons.html">Internship Lessons </a>
+                <div id="right-arrow"><i class="fa fa-chevron-circle-right"></i></div>
             </div>
         </div>
     </section>
