@@ -4,7 +4,7 @@ Category: Misc
 Tags: misc
 Slug: analytics
 Summary: How I set up website analytics tracking with Umami
-status: hidden
+status: published
 
 <script src="{attach}/scripts/medium-zoom.js"></script>
 
