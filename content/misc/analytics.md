@@ -16,16 +16,16 @@ Nutshell.setOptions({
 </script>
 
 
-I'll be testing [Nutshell](https://github.com/ncase/nutshell) out! When you see a link like [:this](#note1), click on it to expand it.
+I'll be testing [Nutshell](https://github.com/ncase/nutshell){: target="_blank"} out! When you see a link like [:this](#note1), click on it to expand it.
 
 ---
 
 ![umami screens overlaid]({attach}/images/umami/cover.jpg){: .zoomable}
 
 
-[Umami](https://umami.is/). is an open source analytics provider focused on privacy. This means you can see information about people who visit your website, like their country. 
+[Umami](https://umami.is/){: target="_blank"}. is an open source analytics provider focused on privacy. This means you can see information about people who visit your website, like their country. 
 
-You can find Starly's analytics dashboard [here](https://umami.starly.dev/share/hNfhWdonj5bA5dBj/starly.dev) !
+You can find Starly's analytics dashboard [here](https://umami.starly.dev/share/hNfhWdonj5bA5dBj/starly.dev){: target="_blank"} !
 
 ---
 
@@ -39,9 +39,8 @@ If you're just here to figure out installing Umami without any extra bits, you'l
 
 ## Software Requirements
 - i am using Ubuntu 23.10 on a Digital Ocean instance
-- install Node.js, [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04){: .blue-link target="_blank"}
-- install Nginx, [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04){: .blue-link target="_blank"}
-- install PostgreSQL, [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-22-04){: .blue-link target="_blank"}
+- install Node.js, [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04){: target="_blank"}
+- install PostgreSQL, [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-22-04){: target="_blank"}
     - you can also use MySQL with Umami, but this post uses postgres
 
 actual install docs from umami are [here](https://umami.is/docs/install){: target="_blank"}
@@ -69,6 +68,7 @@ actual install docs from umami are [here](https://umami.is/docs/install){: targe
     - run `createdb --username=postgres --host=localhost umami`
     - create a `.env` file in the cloned umami folder
     - put this line in `.env`, filling in your Postgres's details: `DATABASE_URL=postgresql://[USERNAME]:[PASSWORD]@[DB_LOCATION]:[PORT]/[DATABASE_NAME]`
+        - if this string is incorrect, it will show this [:error](#error)
     
     Use the `createdb` command to create a database called umami. Then, put your connection string into a new `.env` file so Umami knows how to connect to your Postgres instance and which database to put the metrics in. 
 
@@ -76,7 +76,7 @@ actual install docs from umami are [here](https://umami.is/docs/install){: targe
     
     Note: If you've installed postgres for the first time, you may want to make another user besides the default (postgres), set a password, or change authentication methods.
 
-4. **build Umami**
+1. **build Umami**
     - `yarn build`
     - some optional things:
         - `yarn next telemetry disable` to disable Next.js telemetry
@@ -88,7 +88,7 @@ actual install docs from umami are [here](https://umami.is/docs/install){: targe
     
     [:More about swap](#swap)
 
-5. **start Umami**
+2. **start Umami**
     - run `npm start`
     - go to `http://[IP]:3000/`, where `[IP]` is the IP address of your server
     - log in
@@ -104,16 +104,16 @@ actual install docs from umami are [here](https://umami.is/docs/install){: targe
         - make sure you're in the umami folder before running
     - `pm2 save`
 
-    These steps install PM2 globally, start the Umami instance, and saves it in a list that you can easily restart later.
+    These steps install PM2 globally, start the Umami instance with PM2, and saves the process in a list that you can easily restart later (with `pm2 start all` and `pm2 stop all`)
 
-6. **set up site**
+3. **set up site**
     - in Umami, go to Settings > Websites
     - click Add Website
         - name: can be anything you want (e.g. starly)
         - domain: your website domain (e.g. starly.dev)
         - add website [:screenshot](#add_site)
     - click edit > tracking code 
-        - copy tracking code and put it somewhere in the `<head>...</head>` tag of your website
+        - copy tracking code and put it in the `<head>...</head>` tag of each website page you want to track
         - tracking code [:screenshot](#screenshot)
     - optional:
         - edit > enable share URL if you'd like to share the dashboard
@@ -131,18 +131,20 @@ At this point, you're done setting Umami up and have reliable metrics about your
 
 ## There's *more*??
 
-One other thing I did was set up umami.starly.dev as the domain to send (proxy) Umami requests to. This means that you can access Umami at your chosen domain instead of `http://[IP]:3000/`.
+One other thing I did was set up `umami.starly.dev` as the domain to send (proxy) Umami requests to using Nginx. This means that you can access Umami at your chosen domain instead of `http://[IP]:3000/`.
 
-If your website is hosted on the same server that you're running Umami on, you only need to add an Nginx configuration to change the domain. However, because I'm running most of the website on Github Pages, I also had to change my DNS settings to tell the internet where umami.starly.dev is. 
+If your website is hosted on the same server that you're running Umami on, you only need to add an Nginx configuration to change the domain. However, because I'm running most of the website on Github Pages, I also had to change my DNS settings to tell the internet where `umami.starly.dev` is. 
 
 If you want to use https, you will have to set up SSL certs on your server. 
+
+Nginx install [tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-22-04){: target="_blank"}.
 
 ## Proxy Umami Requests
 
 1. **set up DNS so requests go to your server** <br> (only needed if Umami and your website are hosted in different places!!!!!)
     - add a new A record to your DNS 
         - name: the subdomain you want to use
-            - e.g. use umami if you want to point to umami.starly.dev
+            - e.g. use umami if you want to point to `umami.starly.dev`
         - address: your server's IP address
     - [:What should my DNS look like?](#dns)
 
@@ -188,8 +190,8 @@ If you want to use https, you will have to set up SSL certs on your server.
 
     I have not used Let's Encrypt, so this guide only covers Cloudflare. Here are Let's Encrypt's directions:
 
-    - [Getting Started](https://letsencrypt.org/getting-started/){: .blue-link target="_blank"}
-    - [Instructions](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal){: .blue-link target="_blank"} for nginx and Ubuntu
+    - [Getting Started](https://letsencrypt.org/getting-started/){: target="_blank"}
+    - [Instructions](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal){: target="_blank"} for nginx and Ubuntu
 
     Steps for using Cloudflare certs:
 
@@ -222,6 +224,7 @@ If you want to use https, you will have to set up SSL certs on your server.
                     }
                 }
 
+        - example of [:nginx.conf](#nginx2)
         - Now, you should be able to access Umami from `https://umami.starly.dev`. 
 
     You can also change your tracking code to use `umami.yourdomain.com` (you can copy the code again from Umami)
@@ -267,6 +270,12 @@ hi!
 
 - Postgres's default port is 5432, so use this if you have not configured another port 
 - Use localhost if your Postgres is on the same server as Umami; otherwise, use the IP of the server Postgres is located on
+
+## :x error
+
+    ✓ DATABASE_URL is defined.
+    ✗ Unable to connect to the database.
+    error Command failed with exit code 1.
 
 ## :x swap
 
@@ -370,6 +379,60 @@ http is a way for computers to fetch the website data you've requested. https is
 When you go to a website with https, your browser checks the website's SSL certificate. Your browser does a TLS handshake, which is an exchange of encryption keys between you and the website's server made possible by the SSL certificate's information. 
 
 Now, your browser can encrypt your data using these keys so that only you and the website can read your data. The certificate also ensures the website you're going to is who they claim to be.
+
+## :x nginx2
+
+    :::nginx
+    user www-data;
+    worker_processes auto;
+    pid /run/nginx.pid;
+    error_log /var/log/nginx/error.log;
+
+    events {
+            worker_connections 768;
+    }
+
+    http {
+            sendfile on;
+            tcp_nopush on;
+            types_hash_max_size 2048;
+            include /etc/nginx/mime.types;
+            default_type application/octet-stream;
+            ssl_prefer_server_ciphers on;
+
+            access_log /var/log/nginx/access.log;
+            gzip on;
+
+            server {
+                listen 80;
+                listen [::]:80;
+
+                server_name umami.starly.dev;
+
+                location / {
+                    proxy_pass http://localhost:3500/;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header Host $host;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                }
+            }
+
+            server {
+                listen 443 ssl http2;
+                listen [::]:443 ssl http2;
+                ssl_certificate         /etc/ssl/cert.pem;
+                ssl_certificate_key     /etc/ssl/key.pem;
+
+                server_name umami.starly.dev;
+
+                location / {
+                    proxy_pass http://localhost:3000/;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header Host $host;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                }
+            }
+    }
 
 <script>  
 const zoom = mediumZoom('.zoomable')

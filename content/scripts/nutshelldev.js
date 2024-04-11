@@ -1183,7 +1183,6 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
             const tags = content.getElementsByTagName('img');
 
             if (tags.length !== 0) {
-                const selector = '.nutshell-zoom'; // the .zoomable class
                 const zoom = mediumZoom();
                 const arr = Array.from(tags);
 
@@ -1529,7 +1528,11 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         /* blue color for text */
         /* Boring style to fit parent */
         color: #58A4B0;
-        text-decoration: underline dotted #58A4B0;
+        // color: #00a90e;
+        // text-decoration: underline dotted #58A4B0;
+        text-decoration: none;
+        text-shadow: 1px 1px 10px AliceBlue;
+        background-image: none;
 
         /* So those balls work */
         position:relative;
@@ -1538,6 +1541,12 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         transition: opacity 0.1s ease-in-out;
         opacity: 1;
 
+    }
+    #container .nutshell-expandable::after{
+        background: none;
+        width: 0px;
+        height: 0px;
+        margin-left: 0px;
     }
     .nutshell-expandable:hover{
         opacity: 0.8;
@@ -1555,8 +1564,8 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         left: 1px;
 
         /* They're balls */
-        width: 0.15em;
-        height: 0.15em;
+        width: 0.17em;
+        height: 0.17em;
         background: #000;
         border-radius: 1em;
 

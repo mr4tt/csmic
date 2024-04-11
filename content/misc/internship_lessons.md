@@ -19,7 +19,7 @@ these are things i found useful through my internships and are probably good gui
 
 ---
 
-I'll be testing [Nutshell](https://github.com/ncase/nutshell) out! When you see a link like [:this](#note1), click on it to expand it.
+I'll be testing [Nutshell](https://github.com/ncase/nutshell){: target="_blank"} out! When you see a link like [:this](#note1), click on it to expand it.
 
 ---
 
@@ -46,13 +46,13 @@ I'll be testing [Nutshell](https://github.com/ncase/nutshell) out! When you see 
    
 3. **talk to people! set up coffee chats with anyone doing anything you find interesting**
     - given a topic / area you want chat about, your manager / team members will help you find people to talk to if you aren't sure who
-    - come with a list of questions you want to talk about; here's [my list](https://docs.google.com/spreadsheets/d/1WzSHwv_hTlsfgAC48OTBDUfOw5NFwRwygPLtYjf2DY4/){: .blue-link} for coffee chats
+    - come with a list of questions you want to talk about; here's [my list](https://docs.google.com/spreadsheets/d/1WzSHwv_hTlsfgAC48OTBDUfOw5NFwRwygPLtYjf2DY4/){: target="_blank"} for coffee chats
     - similarly, if you hear about interesting projects during stand up, you can set up a quick meeting with your team member and have them run through it with you 
   
 4. **have understandable commits, code, and readme**
     - people are looking at them and judging you based on it because these are the main things you are there to create
     - ask your mentor about how they style commits and comments
-        - might be worth looking at [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/){: .blue-link}
+        - might be worth looking at [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/){: target="_blank"}
             - [:tldr](#conventional)
     - make everything you create as user friendly as possible
         - note down how to run your code, potential failures and how to remedy them
@@ -63,13 +63,13 @@ I'll be testing [Nutshell](https://github.com/ncase/nutshell) out! When you see 
     - listen to talks about similar projects in other companies or how your team functions in other companies
     - do not spend too much time rabbit holing into tools or the codebase at the expense of doing things
     - look up style guides for languages you're using to learn best practices
-        - ex: list of google's [style guides](https://google.github.io/styleguide/){: .blue-link}, uber's [go guide](https://github.com/uber-go/guide/blob/master/style.md){: .blue-link}
+        - ex: list of google's [style guides](https://google.github.io/styleguide/){: target="_blank"}, uber's [go guide](https://github.com/uber-go/guide/blob/master/style.md){: target="_blank"}
 
 6. **ask good questions**
     - ask for lots of help if you need it! it's more productive to ask than spend an hour hunting online for an answer 
     - make sure to google your question before you ask
         - if you didn't find anything useful, ask for help and mention what you discovered online
-    - anything else i have to say has been said better by julia evans: [(1)](https://jvns.ca/blog/good-questions/){: .blue-link} [(2)](https://jvns.ca/blog/2021/10/21/how-to-get-useful-answers-to-your-questions/){: .blue-link}
+    - anything else i have to say has been said better by julia evans: [(1)](https://jvns.ca/blog/good-questions/){: target="_blank"} [(2)](https://jvns.ca/blog/2021/10/21/how-to-get-useful-answers-to-your-questions/){: target="_blank"}
 
 7. **if you find something annoying, see if you can quickly automate it**
     - bash is your friend

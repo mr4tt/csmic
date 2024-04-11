@@ -151,19 +151,26 @@ time {
   color: #666666;
 }
 
-#container p a {
+#container article a {
   font-style: italic;
   text-decoration: underline;
-  text-decoration-style: dotted;
-  color: #1f60e2;
+  /* text-decoration-style: dotted; */
+  color: #2b69e4;
+
 }
 
-.blue-link,
-a[href*="blue-link"] {
-  font-style: italic;
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  color: #1f60e2;
+
+#container article a::after {
+  content: "";
+  width: 11px;
+  height: 11px;
+  margin-left: 4px;
+  
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 512 512' opacity='0.6' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z'/%3e%3c/svg%3e");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
 }
 
 #container main section#list ul {
@@ -276,7 +283,7 @@ a[href*="blue-link"] {
 
 .meta-aside,
 #container main section#home ul li aside,
-#container main article aside {
+#container main aside {
   margin: 0.5em 0;
   font-family: "Ruda", sans-serif;
   color: #909090;
@@ -285,7 +292,7 @@ a[href*="blue-link"] {
 
 .meta-aside ul,
 #container main section#home ul li aside ul,
-#container main article aside ul {
+#container main aside ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -293,7 +300,7 @@ a[href*="blue-link"] {
 
 .meta-aside ul li,
 #container main section#home ul li aside ul li,
-#container main article aside ul li {
+#container main aside ul li {
   margin: 0;
   padding: 0;
 }
