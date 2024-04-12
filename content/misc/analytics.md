@@ -317,12 +317,11 @@ Windows has a similar concept called page / pagefile; [here](https://stackoverfl
 
 1. go to your website and inspect element
 2. go to the Application tab 
-3. go to Cookies
-4. double click the next available space below `Name` and type `umami.disabled`
+3. go to Local Storage
+4. double click the next available space below `Key` and type `umami.disabled`
 5. add a value to it of `1`
 
-![cookie example]({attach}/images/umami/cookie.png)
-
+![localStorage example]({attach}/images/umami/cookie.png)
 
 ## :x dns
 ![screenshot of DNS settings]({attach}/images/umami/dns.png)
