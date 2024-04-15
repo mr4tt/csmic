@@ -45,7 +45,7 @@ ARTICLE_URL = '{date:%Y}/{slug}.html'
 # can add readtime if desired
 PLUGINS = ['neighbors']
 
-STATIC_PATHS = ['images', 'extra/CNAME', 'extra/favicon.ico', 'extra/og-default.png', 'extra/resume_it.pdf']
+STATIC_PATHS = ['images', 'scripts', 'extra/CNAME', 'extra/favicon.ico', 'extra/og-default.png', 'extra/resume_it.pdf']
 EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'}, 
                        'extra/favicon.ico': {'path': 'favicon.ico'}, 
                        'extra/resume_it.pdf': {'path': 'resume.pdf'}, }

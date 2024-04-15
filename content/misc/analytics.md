@@ -6,9 +6,9 @@ Slug: analytics
 Summary: How I set up website analytics tracking with Umami
 status: published
 
-<script src="{attach}/scripts/medium-zoom.js"></script>
+<script src="{static}/scripts/medium-zoom.js"></script>
 
-<script src="{attach}/scripts/nutshelldev.js"></script>
+<script src="{static}/scripts/nutshelldev.js"></script>
 <script>
 Nutshell.setOptions({
     dontEmbedHeadings: true, // If 'true', removes the "embed this as a nutshell" option on headings

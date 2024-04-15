@@ -8,6 +8,8 @@ opengraph_image: cover.png
 Summary: Connecting people one event at a time.
 status: hidden
 
+<script src="{static}/scripts/medium-zoom.js"></script>
+
 **Timeframe**: March 2022 → June 2022
 
 **Role**: UX Designer
@@ -16,13 +18,13 @@ status: hidden
 
 ---
 
-![cover photo]({attach}/images/ergo/cover.png "test")
+![cover photo]({attach}/images/ergo/cover.png "test"){: .zoomable}
 
-### Connecting people one event at a time.
+## Connecting people one event at a time.
 
-Imagine a time where you were thrilled to attend a particular event with a couple close friends. As the date nears, they suddenly cancel on you. You still want to go with someone, but you don't know if your other friends are also attending.
+Imagine a time where you were thrilled to attend an event with a couple close friends. As the date nears, they suddenly cancel on you. You still want to go with someone, but you don't know who else is attending.
 
-We created ERGO, a social event app that connects you with people on your friends list and people you may know through others. 
+We created ERGO, a social event app that connects you with your friends and acquaintances to plan for events together. 
 
 Features:
 
@@ -34,11 +36,11 @@ Features:
 
 ## Motivation
 
-### ERGO helps people who attend events and struggle to find others to attend with despite enjoying going with friends, especially after plans fall through.
+> ERGO helps people who attend events and struggle to find others to attend with them.
 
 ERGO's goal is to bring people together through social events and location-based services. When people attend large events, they may not know if their friends are attending until they are notified of their location through social media, mutual friends, or even coincidentally running into them. To solve this problem, we created an app that incorporated location-based services and notifications to simplify the process of finding friends who want to attend events.
 
-After conducting both a literature review and a survey, our presumptions were proven to be true.
+We conducted both a literature review and a survey to see if there was a need for this kind of app. 
 
 For the literature review, we researched how location-based services function and how many applications utilize location features. We found that location-based services are often used for recommending users about locations close to them. These user recommendations may be applied to various services, like dining, routing, and communication. As technology advances, there is a lot of room for location-based services to expand and grow.
 
@@ -78,7 +80,8 @@ Our design process for ERGO consisted of two parts:
     <br>
   </div>
   <div class="col">
-    <img src="{attach}/images/ergo/ergoGif.gif"/>
+    <img src="{attach}/images/ergo/ergoGif.gif" class="zoomable"/>
+    NOTE NEED TO REPLACE W ACTUAL PICTURE OF PROTOTYPE
   </div>
 </div>
 
@@ -166,18 +169,6 @@ The Figma scenarios were better at simulating real-world choices regarding wheth
     </div>
     <div class="col col--3">
         <figure>
-            <img src="{attach}/images/ergo/screen5.png">
-            <figcaption>
-                <p> 
-                    Group Chats: 
-                    <br>
-                    People can chat in groups created by mutual friends. This is a great way to connect weak ties based on mutual strong tied friends. 
-                </p>
-            </figcaption>
-        </figure>
-    </div>
-    <div class="col col--3">
-        <figure>
             <img src="{attach}/images/ergo/screen6.png">
             <figcaption>
                 <p> 
@@ -188,13 +179,25 @@ The Figma scenarios were better at simulating real-world choices regarding wheth
             </figcaption>
         </figure>
     </div>
+    <div class="col col--3">
+        <figure>
+            <img src="{attach}/images/ergo/ergoGif.gif"/>
+            <figcaption>
+                <p>
+                Clicking through each screen available in ERGO
+                </p>
+            </figcaption>
+        </figure>
+    </div>
   </div>
 </div>
 
 
 ## Social Structures and Complexities
 
-Through experiences and our team's research, we know finding common interests amongst people in the same social circles are expected features in many social media apps. These include features like a friends list, liking and subscribing to artists, an explore page of artists and their upcoming events. Liking and sharing posts are also common amongst social media apps. In some applications, social tie strength can be measured through the use of these features. The more activity that one person does within the app that includes other users increases their tie strength.
+this entire thing sucks 
+
+Through experiences and our team's research, we know finding common interests amongst people in the same social circles are expected features in many social media apps. These include features like a friends list, liking and subscribing to artists, an explore page of artists and their upcoming events. Liking and sharing posts are also common amongst social media apps. In some applications, social tie strength can be measured through the use of these features, such as two people talking to each other. 
 
 Now the issue is about users who do not like interacting with apps as much. One way to tell about a weak tie strength is based around the lack of interactivity within the app. However, we can't establish if the real reason that users have weak tie strength either because they do not have the same amount of interest with some people over others, or if those users have a cognitive load that does not allow them to use social media apps at the same rate as those with stronger social ties. There's a possibility that the tie strength is weak is more due to this lack of cognitive load than the lack of interests that two mutually known users. 
 
@@ -218,10 +221,6 @@ My contributions:
 
 [https://youtu.be/Upzj-sL4XVU](https://youtu.be/Upzj-sL4XVU)
 
-<!-- <figure class="float-left">
-    <img src="{attach}/images/ergo/ergoGif.gif">
-    <figcaption> <p> testing </p> </figcaption>
-</figure>
-
- aaaaaaa
-<br> -->
+<script>  
+const zoom = mediumZoom('.zoomable')
+</script>
