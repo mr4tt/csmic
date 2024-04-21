@@ -54,38 +54,36 @@
     {% endblock head %}
 </head>
 <body>
-{% include 'github.html' %}
-<div id="container">
-    <header>
-        <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
+    <header class="home-link">
+        <h1 class="home-link-size"><a class="home-link-color" href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
         {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
             <ul class="social-media">
                 {% for name, link in SOCIAL %}
-                    <li><a href="{{ link }}" target="_blank" data-umami-event="{{ name }}"><i class="{{ name }}" aria-hidden="true"></i></a></li>
+                    <li class="social-media-list-item"><a href="{{ link }}" target="_blank" data-umami-event="{{ name }}"><i class="{{ name }}" aria-hidden="true"></i></a></li>
                 {% endfor %}
-                {% if FEED_ALL_ATOM %}
+                <!-- {% if FEED_ALL_ATOM %}
                     <li><a href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate"><i class="fa fa-rss fa-lg" aria-hidden="true"></i></a></li>
                 {% endif %}
                 {% if FEED_ALL_RSS %}
                     <li><a href="{{ FEED_DOMAIN }}/{% if FEED_ALL_RSS_URL %}{{ FEED_ALL_RSS_URL }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" type="application/rss+xml" rel="alternate"><i class="fa fa-rss fa-lg" aria-hidden="true"></i></a></li>
-                {% endif %}
+                {% endif %} -->
             </ul>
         {% endif %}
         <p><em>{{ SITESUBTITLE }}</em></p>
     </header>
     <nav>
-        <ul>
+        <ul class="nav-list">
             {% for title, link in MENUITEMS %}
-                <li><a href="{{ link }}">{{ title }}</a></li>
+                <li class="nav-list-item"><a href="{{ link }}">{{ title }}</a></li>
             {% endfor %}
             {% if DISPLAY_CATEGORIES_ON_MENU %}
                 {% for cat, null in categories %}
-                    <li><a {% if cat==category %} class="active" {% endif %}href="{{ SITEURL }}/{{ cat.url }}" data-umami-event="{{ cat }}">{{ cat }}</a></li>
+                    <li class="nav-list-item"><a {% if cat==category %} class="current-nav-item" {% endif %}href="{{ SITEURL }}/{{ cat.url }}" data-umami-event="{{ cat }}">{{ cat }}</a></li>
                 {% endfor %}
             {% endif %}
             {% if DISPLAY_PAGES_ON_MENU %}
                 {% for p in pages %}
-                    <li><a {% if p==page %} class="active" {% endif %}href="{{ SITEURL }}/{{ p.url }}" data-umami-event="{{ p.title }}">{{ p.title }}</a></li>
+                    <li class="nav-list-item"><a {% if p==page %} class="current-nav-item" {% endif %}href="{{ SITEURL }}/{{ p.url }}" data-umami-event="{{ p.title }}">{{ p.title }}</a></li>
                 {% endfor %}
             {% endif %}
         </ul>
@@ -93,13 +91,16 @@
     {% block content %}
     {% endblock %}
     <footer>
-        <h6>
-            Rendered by <a href="http://getpelican.com/">Pelican</a> &nbsp;&bull;&nbsp; Theme by <a href="https://github.com/aleylara/Peli-Kiera">Peli-Kiera</a> 
-            &nbsp;&bull;&nbsp; {% if COPYRIGHT %}{Copyright&copy { COPYRIGHT }} {% endif %} {% if AUTHOR %} By {{ AUTHOR }} {% endif %}
+        <h6 class="footer-text">
+            Rendered by <a href="http://getpelican.com/">Pelican</a> 
+            &nbsp;&bull;&nbsp; 
+            Theme by <a href="https://github.com/aleylara/Peli-Kiera">Peli-Kiera</a> 
+            &nbsp;&bull;&nbsp; 
+            {% if COPYRIGHT %}
+                {Copyright&copy { COPYRIGHT }} {% endif %} {% if AUTHOR %} By {{ AUTHOR }}
+            {% endif %}
         </h6>
     </footer>
-</div>
-{% include 'analytics.html' %}
 </body>
 </html>
 

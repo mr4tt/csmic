@@ -13,32 +13,34 @@
 {% block content %}
 <main>
     <article>
-        <h1>{{ article.title }}</h1>
+        <h1 class="title">{{ article.title }}</h1>
         {% import 'translations.html' as translations with context %}
         {{ translations.translations_for(article) }}
     </article>
     <aside>
-        <ul>
-            <li>
+        <ul class="list-no-style">
+            <li class="aside-item">
                 <time datetime="{{ article.date }}">{{ article.date|strftime('%b %d, %Y') }}</time>
             </li>
             {% if article.modified %}
-            <li>
+            <li class="aside-item">
                 <time datetime="{{ article.modified }}">Modified
                     on {{ article.modified|strftime('%b %d, %Y') }}</time>
             </li>
             {% endif %}
             <!-- {% if article.readtime %}
-            <li>{{ article.readtime.minutes }} min read</li>
+            <li class="aside-item">
+                {{ article.readtime.minutes }} min read
+            </li>
             {% endif %} -->
             {% if article.category %}
-            <li>
+            <li class="aside-item">
                 Categories:
                 <a href="{{ SITEURL }}/{{ article.category.url }}"><em>{{ article.category }}</em></a>
                 {% endif %}
             </li>
             {% if article.tags %}
-            <li>
+            <li class="aside-item">
                 Tags:
                 {% for tag in article.tags %}
                 <a href="{{ SITEURL }}/{{ tag.url }}"><em>#{{ tag }}</em></a>
@@ -51,19 +53,19 @@
         {{ article.content }}
     </article>
     <section class="post-nav">
-        <div id="left-page">
-            <div id="left-link">
+        <div class="left-page">
+            <div class="left-link">
                 {% if article.next_article %}
-                <div id="left-arrow"><i class="fa fa-chevron-circle-left"></i></div>
+                <div class="left-arrow"><i class="fa fa-chevron-circle-left"></i></div>
                 <a href="{{ SITEURL }}/{{ article.next_article.url }}"> {{ article.next_article.title }}</a>
                 {% endif %}
             </div>
         </div>
-        <div id="right-page">
-            <div id="right-link">
+        <div class="right-page">
+            <div class="right-link">
                 {% if article.prev_article %}
                 <a href="{{ SITEURL }}/{{ article.prev_article.url }}">{{ article.prev_article.title }} </a>
-                <div id="right-arrow"><i class="fa fa-chevron-circle-right"></i></div>
+                <div class="right-arrow"><i class="fa fa-chevron-circle-right"></i></div>
                 {% endif %}
             </div>
         </div>

@@ -1523,7 +1523,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
     EXPANDABLE LINKS
     ***************************************************/
 
-    #container .nutshell-expandable{
+    .nutshell-expandable{
         /* i think this selector changes attributes around the text? */
         /* blue color for text */
         /* Boring style to fit parent */
@@ -1531,7 +1531,6 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         // color: #00a90e;
         // text-decoration: underline dotted #58A4B0;
         text-decoration: none;
-        text-shadow: 1px 1px 10px AliceBlue;
         background-image: none;
 
         /* So those balls work */
@@ -1542,7 +1541,7 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         opacity: 1;
 
     }
-    #container .nutshell-expandable::after{
+    .nutshell-expandable::after{
         background: none;
         width: 0px;
         height: 0px;
@@ -1738,10 +1737,10 @@ Bubble: the box that expands below an expandable, containing a Nutshell Section
         margin-bottom: 0.5em;
     }
     .nutshell-bubble code{
-        background: #ddd;
+        // background: #ddd;
         border-radius: 5px;
         /*font-weight:100;*/
-        padding: 0 5px;
+        // padding: 0 5px;
     }
     .nutshell-bubble blockquote{
         /*background: #eee;*/

@@ -121,7 +121,7 @@ The Figma scenarios were better at simulating real-world choices regarding wheth
         <figure>
             <img src="{attach}/images/ergo/screen1.png">
             <figcaption>
-                <p> 
+                <p class="caption"> 
                     Home Screen: 
                     <br>
                     Users can view upcoming events nearby and plan and book events Within these user's events, they can view other friends who are also attending. 
@@ -133,7 +133,7 @@ The Figma scenarios were better at simulating real-world choices regarding wheth
         <figure>
             <img src="{attach}/images/ergo/screen2.png">
             <figcaption>
-                <p> 
+                <p class="caption"> 
                     Friend Activity: 
                     <br>
                     Users can see the events their friends are at or planning to attend. Users can view their strong ties, but also weak ties (friends-of-friends).
@@ -145,7 +145,7 @@ The Figma scenarios were better at simulating real-world choices regarding wheth
         <figure>
             <img src="{attach}/images/ergo/screen3.png">
             <figcaption>
-                <p> 
+                <p class="caption"> 
                     Notifications: 
                     <br>
                     Users can see their notifications, such as event updates, where ERGO will notify a user about their friends planning events or someone's arrival at an event. 
@@ -159,7 +159,7 @@ The Figma scenarios were better at simulating real-world choices regarding wheth
         <figure>
             <img src="{attach}/images/ergo/screen4.png">
             <figcaption>
-                <p> 
+                <p class="caption"> 
                     Private Messages: 
                     <br>
                     Users can see their messages to people and the locations of friends you that you have recently just chatted with (if enabled). 
@@ -171,7 +171,7 @@ The Figma scenarios were better at simulating real-world choices regarding wheth
         <figure>
             <img src="{attach}/images/ergo/screen6.png">
             <figcaption>
-                <p> 
+                <p class="caption"> 
                     Friends Nearby:
                     <br>
                     The map displays the nearby locations of friends when they are currently at an event. This helps users locate one another at the same event.
@@ -183,7 +183,7 @@ The Figma scenarios were better at simulating real-world choices regarding wheth
         <figure>
             <img src="{attach}/images/ergo/ergoGif.gif"/>
             <figcaption>
-                <p>
+                <p class="caption">
                 Clicking through each screen available in ERGO
                 </p>
             </figcaption>

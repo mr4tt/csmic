@@ -4,14 +4,24 @@
 
 {% block content %}
     <main>
-        <section id="list">
+        <section>
             <h2>Authors</h2>
-            <ul>
+            <ul class="list-no-style">
                 {% for author, articles in authors|sort %}
                     {% if author == "" %}
-                        <li><a href="#">Anonymous</a>({{ articles|count }})</li>
+                        <li class="article-list-item">
+                            <a href="#">
+                                Anonymous
+                            </a>
+                            ({{ articles|count }})
+                        </li>
                         {% else %}
-                        <li><a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>({{ articles|count }})</li>
+                        <li class="article-list-item">
+                            <a href="{{ SITEURL }}/{{ author.url }}">
+                                {{ author }}
+                            </a>
+                            ({{ articles|count }})
+                        </li>
                     {% endif %}
                 {% endfor %}
             </ul>

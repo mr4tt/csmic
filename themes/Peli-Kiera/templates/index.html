@@ -1,19 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
     <main>
-        <section id="home">
-            <ul>
+        <section>
+            <ul class="list-no-style">
                 {% for article in articles_page.object_list %}
-                    <li>
-                        <h1><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
-                               title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h1>
-                        <aside>
-                            <ul>
-                                <li>
+                    <li class="home-page-list-item">
+                        <h1 class="title">
+                            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+                               title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
+                        </h1>
+                        <aside class="home-page-aside">
+                            <ul class="list-no-style">
+                                <li class="aside-item">
                                     <time datetime="{{ article.date }}">{{ article.date|strftime('%b %d, %Y') }}</time>
                                 </li>
                                 <!-- {% if article.readtime %}
-                                    <li>
+                                    <li class=""aside-item"">
                                         {{ article.readtime.minutes }} min read
                                     </li>
                                 {% endif %} -->

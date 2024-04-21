@@ -156,7 +156,7 @@ The pagination is presented with the current page and 3 neighboring pages on eit
                                         
    <<  <   7  8  9  **10**  11  12  13  >  >>
       
-Images can be moved on page by adding the tag `#float-right`, `#float-left`, `#mid` and `#full` in your markdown.
+Images can be moved on page by adding the tag `#float-right`, `#float-left`, `#mid` and `#full` in your markdown. NOT ANYMORE
 
 ```markdown
 ![Title]({static}/images/my_image-600x400.png#float-right "camera icon")

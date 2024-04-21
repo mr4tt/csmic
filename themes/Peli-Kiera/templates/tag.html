@@ -4,13 +4,17 @@
 
 {% block content %}
     <main>
-        <section id="list">
+        <section>
             <h2>#{{ tag }}</h2>
-            <ul>
+            <ul class="list-no-style">
                 {% for article in dates %}
-                    <li>
-                        <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
-                        <time>{{ article.date|strftime('%b %Y') }}</time>
+                    <li class="article-list-item">
+                        <a href="{{ SITEURL }}/{{ article.url }}">
+                            {{ article.title }}
+                        </a>
+                        <time class="article-list-time">
+                            {{ article.date|strftime('%b %Y') }}
+                        </time>
                     </li>
                 {% endfor %}
             </ul>
