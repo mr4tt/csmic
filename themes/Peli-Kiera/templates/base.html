@@ -8,7 +8,11 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+        <title>
+            {% block title %}
+                {{ SITENAME }}
+            {% endblock title %}
+        </title>
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="starly.dev" />
         
@@ -45,6 +49,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda"/>
         <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/{{ CSS_FILE }}"/>
+
         {% if FEED_ALL_ATOM %}
         <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed"/>
         {% endif %}
@@ -56,7 +61,8 @@
 <body>
     <header class="home-link">
         <h1 class="home-link-size"><a class="home-link-color" href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
-        {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
+        <div class="media-strip">
+            {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
             <ul class="social-media">
                 {% for name, link in SOCIAL %}
                     <li class="social-media-list-item"><a href="{{ link }}" target="_blank" data-umami-event="{{ name }}"><i class="{{ name }}" aria-hidden="true"></i></a></li>
@@ -68,7 +74,30 @@
                     <li><a href="{{ FEED_DOMAIN }}/{% if FEED_ALL_RSS_URL %}{{ FEED_ALL_RSS_URL }}{% else %}{{ FEED_ALL_RSS }}{% endif %}" type="application/rss+xml" rel="alternate"><i class="fa fa-rss fa-lg" aria-hidden="true"></i></a></li>
                 {% endif %} -->
             </ul>
-        {% endif %}
+            {% endif %}
+    
+            <div class="burg">
+                <input type="checkbox" />
+                <span></span>
+                <ul class="menu__box">
+                    {% for title, link in MENUITEMS %}
+                        <li class="menu__item"><a href="{{ link }}">{{ title }}</a></li>
+                    {% endfor %}
+                    {% if DISPLAY_CATEGORIES_ON_MENU %}
+                        {% for cat, null in categories %}
+                            <li class="menu__item"><a {% if cat==category %} class="current-nav-item" {% endif %}href="{{ SITEURL }}/{{ cat.url }}" data-umami-event="{{ cat }}">{{ cat }}</a></li>
+                        {% endfor %}
+                    {% endif %}
+                    {% if DISPLAY_PAGES_ON_MENU %}
+                        {% for p in pages %}
+                            <li class="menu__item"><a {% if p==page %} class="current-nav-item" {% endif %}href="{{ SITEURL }}/{{ p.url }}" data-umami-event="{{ p.title }}">{{ p.title }}</a></li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
+        
         <p><em>{{ SITESUBTITLE }}</em></p>
     </header>
     <nav>
