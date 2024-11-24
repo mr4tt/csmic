@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@600&display=swap");
+
+
+/* Poor man's CSS Reset */
+* {
+	box-sizing: border-box;
+}
+
+/* Config */
+:root {
+	--gap: 2rem;
+}
+
+.slides-container {
+	overflow: hidden;
+	height: 600px;
+	width: 80%;
+	display: flex;
+	justify-content: center;
+	outline: 1px solid #333;
+	background: #000;
+}
+
+/* Basic Carousel Styles */
+.slides {
+	--slide-width: 75%;
+	--slide-height: calc(var(--slide-width) * 3/4);
+	
+	flex: 1 0 auto;
+	list-style: none;
+	overflow: scroll;
+	/* white-space: nowrap; */
+
+	padding: 0;
+	margin: 0;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+
+	touch-action: pan-y; 
+}
+
+/* Only scroll-snap when not dragging */
+.slides:not(.dragging) {
+	scroll-snap-type: y mandatory;
+}
+
+.slide {
+	flex: 0 0 var(--slide-height);
+	padding: 0;
+	margin: 0;
+	width: var(--slide-width);
+	height: var(--slide-height);
+	scroll-snap-align: center;
+
+	/* position: relative; */
+	overflow: clip; /* Use clip, not hidden! */
+}
+
+.slide > img {
+	display: block;
+	width: 100%;
+	height: 100%;
+
+	/* Stick 'm to the right of their frame */
+	/* position: absolute;
+	bottom: 0; */
+}
+
+
+/* Don’t squeeze the images */
+.slide > img {
+	object-fit: cover;
+	object-position: 0 100%;
+}
+
+/* Scroll-Timeline Supported, Yay! */
+@supports (animation-timeline: view()) {
+	@keyframes adjust-image {
+		0% {
+			object-position: 0 100%;
+		}
+		100% {
+			object-position: 0 0;
+		}
+	}
+
+	.slide > img {
+		animation: adjust-image linear both;
+		animation-timeline: view(y);
+	}
+}
+
+.scroller {
+    --scrollbar-color-thumb: hotpink;
+    --scrollbar-color-track: blue;
+    --scrollbar-width: thin;
+    --scrollbar-width-legacy: 10px;
+}
+
+/* Modern browsers with `scrollbar-*` support */
+@supports (scrollbar-width: auto) {
+    .scroller {
+        scrollbar-width: var(--scrollbar-width);
+    }
+}
+
+/* add scrollbar support stuff */

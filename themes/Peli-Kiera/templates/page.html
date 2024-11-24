@@ -1,4 +1,11 @@
 {% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% if page.title == "Photographs" %}
+<link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/slideUp.css"/>
+{% endif %}
+{% endblock %}
+
 {% block html_lang %}{{ page.lang }}{% endblock %}
 
 {% block title %}{{ SITENAME }} - {{ page.title }}{%endblock%}
