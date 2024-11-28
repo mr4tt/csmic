@@ -8,8 +8,6 @@ opengraph_image: cover.png
 Summary: Connecting people one event at a time.
 status: hidden
 
-<script src="{static}/scripts/medium-zoom.js"></script>
-
 **Timeframe**: March 2022 → June 2022
 
 **Role**: UX Designer
@@ -220,6 +218,8 @@ My contributions:
 ### Final Presentation
 
 [https://youtu.be/Upzj-sL4XVU](https://youtu.be/Upzj-sL4XVU)
+
+<script src="{static}/scripts/medium-zoom.js"></script>
 
 <script>  
 const zoom = mediumZoom('.zoomable')
