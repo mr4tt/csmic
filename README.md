@@ -1,7 +1,7 @@
 # csmic
-personal blog :)
+personal blog :) 
 
-uploading comics and case studies and whatever else i feel like
+uploading comics and case studies and whatever else i feel like at https://starly.dev
 
 theme can be found [here](https://github.com/aleylara/Peli-Kiera), although i have modified some pieces in both the html and css
 
